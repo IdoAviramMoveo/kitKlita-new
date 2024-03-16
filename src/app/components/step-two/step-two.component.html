@@ -1,0 +1,26 @@
+<div class="step-main-container" [formGroup]="formGroup">
+  <ng-container *ngFor="let field of fields">
+    <div *ngIf="field.type === 'text' || field.type === 'number'">
+      <input
+        class="text-input"
+        [type]="field.type"
+        [formControlName]="field.name"
+        [placeholder]="field.label"
+      />
+    </div>
+
+    <div *ngIf="field.type === 'radio'">
+      <label>{{ field.label }}</label>
+      <ng-container *ngFor="let option of field.options">
+        <label>
+          <input
+            type="radio"
+            [formControlName]="field.name"
+            [value]="option.value"
+          />
+          {{ option.display }}
+        </label>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

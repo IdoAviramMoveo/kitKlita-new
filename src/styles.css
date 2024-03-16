@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Reforma";
+  src: url("../src/assets/fonts/ReformaMedium.ttf") format("truetype");
+  src: url("../src/assets/fonts/FbReforma-Medium.eot");
+  src: url("../src/assets/fonts/FbReforma-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/fonts/FbReforma-Medium.woff") format("woff"),
+    url("../src/assets/fonts/FbReforma-Medium.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+}
