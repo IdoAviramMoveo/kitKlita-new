@@ -9,5 +9,6 @@
     *ngIf="currentStep === 2"
     [formGroup]="registrationForm.get('stepTwo')"
     (nextStep)="goToNextStep()"
+    (prevStep)="goToPreviousStep()"
   ></app-step-two>
 </div>

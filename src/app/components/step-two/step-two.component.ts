@@ -10,6 +10,7 @@ import { stepTwoFields } from '../../data/step-forms.data';
 export class StepTwoComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Output() nextStep = new EventEmitter<void>();
+  @Output() prevStep = new EventEmitter<void>();
 
   fields = stepTwoFields;
 
@@ -27,5 +28,9 @@ export class StepTwoComponent implements OnInit {
     if (this.formGroup.valid) {
       this.nextStep.emit();
     }
+  }
+
+  onPrev() {
+    this.prevStep.emit();
   }
 }

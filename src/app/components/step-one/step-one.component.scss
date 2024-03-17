@@ -3,6 +3,7 @@
 .step-main-container {
   width: 100%;
   height: 100%;
+  font-family: Opensanshebrew, sans-serif;
   background-image: url("../../../assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
@@ -10,9 +11,10 @@
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
+  color: #343530;
+  font-size: 18px;
+  font-weight: 700;
   @include xsmall {
-    justify-content: center;
-    align-items: center;
     padding-top: 0;
   }
 
@@ -32,21 +34,100 @@
 
   .form-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 45px;
     width: 55%;
     margin-right: 6%;
     @include xsmall {
-      margin-right: 0;
       justify-content: center;
+    }
+
+    .dropdown-container {
+      .dropdown-input {
+        border: 1px solid #8f8f8f;
+        color: #343530;
+        display: block;
+        padding: 10px;
+        width: 352px;
+        min-width: 221px;
+        height: 51px;
+        cursor: pointer;
+        font-size: 18px;
+      }
+    }
+
+    .boolean-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .boolean-options-container {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+
+        .boolean-option {
+          height: 52px;
+          width: 150px;
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .boolean-option img {
+          height: 52px;
+          width: 150px;
+        }
+
+        .option-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: black;
+          font-weight: bold;
+          pointer-events: none;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .radio-container {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+
+      .radio-options-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .radio-option {
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+          width: 280px;
+          height: 45px;
+          cursor: pointer;
+        }
+
+        .radio-option img {
+          width: 25px;
+          height: 25px;
+        }
+
+        .option-text {
+          font-size: 19px;
+          font-weight: 400;
+          padding: 1px 6px 2px;
+        }
+      }
     }
   }
 
   .actions-container {
     width: 100%;
-    margin-top: 100px;
-    padding: 100px 6%;
+    padding: 100px 0 0 6%;
     @include xsmall {
       display: flex;
       justify-content: center;
