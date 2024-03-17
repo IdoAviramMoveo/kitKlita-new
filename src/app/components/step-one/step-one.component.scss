@@ -43,16 +43,52 @@
     }
 
     .dropdown-container {
-      .dropdown-input {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      .select-input {
         border: 1px solid #8f8f8f;
+        background-color: white;
+        font-family: Opensanshebrew, sans-serif;
         color: #343530;
-        display: block;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         padding: 10px;
         width: 352px;
         min-width: 221px;
         height: 51px;
         cursor: pointer;
         font-size: 18px;
+      }
+
+      .select-options {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #dcdcdc;
+        width: 352px;
+        box-sizing: border-box;
+        max-height: 170px;
+        overflow-y: scroll;
+        z-index: 3;
+
+        .select-option {
+          font-family: Opensanshebrew, sans-serif;
+          font-size: 19px;
+          width: 100%;
+          text-align: right;
+          min-height: 45px;
+          padding: 5px 6px 2px;
+          border: none;
+          background-color: rgba(255, 255, 255, 1);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+
+          &:hover {
+            background-color: #f6f5f0;
+          }
+        }
       }
     }
 
@@ -108,18 +144,19 @@
           gap: 5px;
           width: 280px;
           height: 45px;
-          cursor: pointer;
         }
 
         .radio-option img {
           width: 25px;
           height: 25px;
+          cursor: pointer;
         }
 
         .option-text {
           font-size: 19px;
           font-weight: 400;
           padding: 1px 6px 2px;
+          cursor: pointer;
         }
       }
     }
@@ -127,8 +164,9 @@
 
   .actions-container {
     width: 100%;
-    padding: 100px 0 0 6%;
+    padding: 50px 6% 100px 6%;
     @include xsmall {
+      padding-right: 0;
       display: flex;
       justify-content: center;
     }

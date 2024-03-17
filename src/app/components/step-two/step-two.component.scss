@@ -3,6 +3,7 @@
 .step-main-container {
   width: 100%;
   height: 100%;
+  font-family: Opensanshebrew, sans-serif;
   background-image: url("../../../assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
@@ -10,9 +11,10 @@
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
+  color: #343530;
+  font-size: 18px;
+  font-weight: 700;
   @include xsmall {
-    justify-content: center;
-    align-items: center;
     padding-top: 0;
   }
 
@@ -38,8 +40,9 @@
     width: 57%;
     margin-right: 6%;
     @include xsmall {
-      margin-right: 0;
       justify-content: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
     }
 
     .text-input {
@@ -68,7 +71,7 @@
         align-items: center;
         box-sizing: border-box;
         cursor: pointer;
-        width: 141px;
+        min-width: 141px;
         height: 97px;
         border: 0.3px solid lightgray;
         background-color: white;
@@ -88,11 +91,12 @@
   .actions-container {
     display: flex;
     justify-content: space-between;
-    padding: 100px 6%;
+    padding: 50px 6% 100px 6%;
     @include xsmall {
       justify-content: center;
       width: 100%;
       gap: 8px;
+      padding-right: 0;
     }
 
     .next-button {

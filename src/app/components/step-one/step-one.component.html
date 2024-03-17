@@ -4,29 +4,38 @@
     <ng-container *ngFor="let field of fields">
       <div *ngIf="field.type === 'dropdown'" class="dropdown-container">
         <label>{{ field.label }}</label>
-        <select [formControlName]="field.name" class="dropdown-input">
-          <option *ngFor="let option of field.options" [value]="option.value">
+        <button class="select-input" (click)="toggleDropdown(field.name)">
+          {{ getSelectedOptionDisplay(field) || "בחר" }}
+          <img class="arrow" src="../../../assets/images/select-arrow.png" />
+        </button>
+        <div *ngIf="dropdowns[field.name]" class="select-options">
+          <button
+            *ngFor="let option of field.options; let i = index; let last = last"
+            class="select-option"
+            (click)="selectOption(field.name, option.value)"
+          >
             {{ option.display }}
-          </option>
-        </select>
+          </button>
+        </div>
       </div>
 
       <div *ngIf="field.type === 'radio'" class="radio-container">
         <label>{{ field.label }}</label>
         <div class="radio-options-container">
-          <div
-            *ngFor="let option of field.options"
-            class="radio-option"
-            (click)="formGroup.get(field.name).setValue(option.value)"
-          >
+          <div *ngFor="let option of field.options" class="radio-option">
             <img
               src="{{
                 formGroup.get(field.name).value === option.value
                   ? option.selectedImage
                   : option.image
               }}"
+              (click)="formGroup.get(field.name).setValue(option.value)"
             />
-            <span class="option-text">{{ option.display }}</span>
+            <span
+              class="option-text"
+              (click)="formGroup.get(field.name).setValue(option.value)"
+              >{{ option.display }}
+            </span>
           </div>
         </div>
       </div>

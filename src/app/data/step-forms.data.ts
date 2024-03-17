@@ -2,6 +2,7 @@ export const stepOneFields = [
   {
     name: 'desiredSector',
     type: 'dropdown',
+    image: '../../../assets/images/select-arrow.svg',
     options: [
       { value: 'sector1', display: 'כח עזר' },
       { value: 'sector2', display: 'רופאים' },
@@ -14,6 +15,7 @@ export const stepOneFields = [
   {
     name: 'desiredRole',
     type: 'dropdown',
+    image: '../../../assets/images/select-arrow.svg',
     options: [
       { value: 'role1', display: 'אחראי/ת סניטרים' },
       { value: 'role2', display: 'גבסן/ית' },
