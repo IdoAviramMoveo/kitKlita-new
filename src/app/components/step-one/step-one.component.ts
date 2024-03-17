@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { stepOneFields } from '../../data/step-forms.data';
 
 @Component({
@@ -9,26 +8,16 @@ import { stepOneFields } from '../../data/step-forms.data';
   styleUrl: './step-one.component.scss',
 })
 export class StepOneComponent implements OnInit {
-  formGroup: FormGroup;
+  @Input() formGroup: FormGroup;
+  @Output() nextStep = new EventEmitter<void>();
+
   fields = stepOneFields;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
-
-  ngOnInit() {
-    this.formGroup = this.fb.group(this.buildFormControls(this.fields));
-  }
-
-  buildFormControls(fields) {
-    const group = {};
-    fields.forEach((field) => {
-      group[field.name] = [''];
-    });
-    return group;
-  }
+  ngOnInit() {}
 
   onNext() {
     if (this.formGroup.valid) {
-      this.router.navigate(['/registration/step-two']);
+      this.nextStep.emit();
     }
   }
 }

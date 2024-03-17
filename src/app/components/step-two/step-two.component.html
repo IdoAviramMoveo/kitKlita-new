@@ -1,4 +1,5 @@
 <div class="step-main-container" [formGroup]="formGroup">
+  <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
       <div *ngIf="field.type === 'text' || field.type === 'number'">
@@ -51,5 +52,9 @@
         </div>
       </div>
     </ng-container>
+  </div>
+  <div class="actions-container">
+    <button type="button" (click)="onNext()" class="back-button">חזור</button>
+    <button type="button" (click)="onNext()" class="next-button">המשך</button>
   </div>
 </div>

@@ -12,6 +12,7 @@ import { UserType } from '../../data/enums.data';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
+  currentStep: number = 1;
 
   stepOneFields = stepOneFields;
   stepTwoFields = stepTwoFields;
@@ -64,6 +65,18 @@ export class RegistrationComponent implements OnInit {
       group[field.name] = [''];
     });
     return group;
+  }
+
+  goToNextStep() {
+    if (this.currentStep < 6) {
+      this.currentStep++;
+    }
+  }
+
+  goToPreviousStep() {
+    if (this.currentStep > 1) {
+      this.currentStep--;
+    }
   }
 
   onSubmit() {
