@@ -1,55 +1,71 @@
 .step-main-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url("../../../assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
   text-align: right;
   padding-top: 36px;
 
-  .text-input {
-    text-align: right;
-    box-sizing: border-box;
-    width: 335px;
-    height: 51px;
-    padding: 8px 12px;
-    font-family: Opensanshebrew, sans-serif;
-    font-size: 17px;
-    ::placeholder {
-      text-align: right;
-    }
-  }
-
-  .gender-options-container {
+  .form-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 45px;
+    width: 55%;
+    margin-right: 6%;
 
-    .gender-image {
-      cursor: pointer;
-    }
-
-    .other-option {
-      display: flex;
-      align-items: center;
+    .text-input {
+      text-align: right;
       box-sizing: border-box;
-      cursor: pointer;
-      width: 141px;
-      height: 97px;
-      border: 0.3px solid lightgray;
-      background-color: white;
-      color: #0f2d6c;
-      font-size: 20px;
-      text-align: center;
-      margin-right: 2px;
+      width: 335px;
+      height: 51px;
+      padding: 8px 12px;
+      font-family: Opensanshebrew, sans-serif;
+      font-size: 17px;
+      ::placeholder {
+        text-align: right;
+      }
     }
 
-    .other-option.selected {
-      background-color: #0f2d6c;
-      color: white;
+    .gender-options-container {
+      display: flex;
+      flex-direction: row;
+
+      .gender-image {
+        cursor: pointer;
+      }
+
+      .other-option {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        width: 141px;
+        height: 97px;
+        border: 0.3px solid lightgray;
+        background-color: white;
+        color: #0f2d6c;
+        font-size: 20px;
+        text-align: center;
+        margin-right: 2px;
+      }
+
+      .other-option.selected {
+        background-color: #0f2d6c;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .step-main-container {
+    justify-content: center;
+    .form-container {
+      margin-right: 0;
+      justify-content: center;
     }
   }
 }

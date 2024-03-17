@@ -1,23 +1,25 @@
 <div class="step-main-container" [formGroup]="formGroup">
-  <ng-container *ngFor="let field of fields">
-    <div *ngIf="field.type === 'dropdown'">
-      <label>{{ field.label }}</label>
-      <select [formControlName]="field.name">
-        <option *ngFor="let option of field.options" [value]="option.value">
-          {{ option.display }}
-        </option>
-      </select>
-    </div>
+  <div class="form-container">
+    <ng-container *ngFor="let field of fields">
+      <div *ngIf="field.type === 'dropdown'">
+        <label>{{ field.label }}</label>
+        <select [formControlName]="field.name">
+          <option *ngFor="let option of field.options" [value]="option.value">
+            {{ option.display }}
+          </option>
+        </select>
+      </div>
 
-    <div *ngIf="field.type === 'radio'">
-      <label>{{ field.label }}</label>
-      <ng-container *ngFor="let option of field.options">
-        <input
-          type="radio"
-          [formControlName]="field.name"
-          [value]="option.value"
-        />{{ option.display }}
-      </ng-container>
-    </div>
-  </ng-container>
+      <div *ngIf="field.type === 'radio'">
+        <label>{{ field.label }}</label>
+        <ng-container *ngFor="let option of field.options">
+          <input
+            type="radio"
+            [formControlName]="field.name"
+            [value]="option.value"
+          />{{ option.display }}
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
 </div>

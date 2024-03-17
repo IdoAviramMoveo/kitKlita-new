@@ -1,20 +1,29 @@
 .step-main-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url("../../../assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
   text-align: right;
   padding-top: 36px;
 
-  .text-input {
-    text-align: right;
-    ::placeholder {
-      text-align: right;
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 45px;
+    width: 55%;
+    margin-right: 6%;
+  }
+}
+
+@media (max-width: 599px) {
+  .step-main-container {
+    justify-content: center;
+    .form-container {
+      margin-right: 0;
+      justify-content: center;
     }
   }
 }

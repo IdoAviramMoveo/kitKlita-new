@@ -3,4 +3,4 @@ export enum UserType {
   Intern = 'intern',
   Volunteer = 'volunteer',
   Independent = 'independent',
-}
+} //
