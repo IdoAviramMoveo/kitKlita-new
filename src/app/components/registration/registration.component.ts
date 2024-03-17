@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
+import { UserType } from '../../data/enums.data';
 
 @Component({
   selector: 'app-registration',
@@ -15,16 +16,22 @@ export class RegistrationComponent implements OnInit {
   stepOneFields = stepOneFields;
   stepTwoFields = stepTwoFields;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.route.firstChild.params.subscribe((params) => {
-      this.userType = params['userType'];
-      console.log(this.userType);
-
-      this.initializeFormBasedOnUserType(this.userType);
-
-      this.initializeForm();
+    this.route.params.subscribe((params) => {
+      const type = params['userType'];
+      if (type && Object.values(UserType).includes(type as UserType)) {
+        this.userType = type;
+        console.log(this.userType);
+        this.initializeForm();
+      } else {
+        this.router.navigate(['/registration/general']);
+      }
     });
   }
 
@@ -36,10 +43,16 @@ export class RegistrationComponent implements OnInit {
   }
 
   initializeFormBasedOnUserType(userType: string) {
-    switch (userType) {
-      case 'user':
+    const type = UserType[userType as keyof typeof UserType];
+
+    switch (type) {
+      case UserType.General:
         break;
-      case 'stager':
+      case UserType.Intern:
+        break;
+      case UserType.Volunteer:
+        break;
+      case UserType.Independent:
         break;
       default:
     }
