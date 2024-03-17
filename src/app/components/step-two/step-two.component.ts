@@ -26,6 +26,14 @@ export class StepTwoComponent implements OnInit {
     return group;
   }
 
+  selectOption(fieldName: string, value: any) {
+    this.formGroup.get(fieldName).setValue(value);
+  }
+
+  isSelected(fieldName: string, value: any): boolean {
+    return this.formGroup.get(fieldName).value === value;
+  }
+
   onNext() {
     if (this.formGroup.valid) {
       this.router.navigate(['/registration/step-three']);

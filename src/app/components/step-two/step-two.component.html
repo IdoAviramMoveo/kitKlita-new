@@ -22,5 +22,32 @@
         </label>
       </ng-container>
     </div>
+
+    <div *ngIf="field.type === 'genderSelect'" class="gender-selection">
+      <label>{{ field.label }}</label>
+      <div class="gender-options-container">
+        <ng-container *ngFor="let option of field.options">
+          <img
+            *ngIf="option.image"
+            [src]="
+              isSelected(field.name, option.value)
+                ? option.selectedImage
+                : option.image
+            "
+            (click)="selectOption(field.name, option.value)"
+            [alt]="option.display"
+            class="gender-image"
+          />
+          <div
+            *ngIf="!option.image"
+            [class.selected]="isSelected(field.name, option.value)"
+            class="other-option"
+            (click)="selectOption(field.name, option.value)"
+          >
+            {{ option.display }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
   </ng-container>
 </div>

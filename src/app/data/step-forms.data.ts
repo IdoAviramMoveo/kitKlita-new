@@ -76,11 +76,21 @@ export const stepTwoFields = [
   },
   {
     name: 'gender',
-    type: 'radio',
+    type: 'genderSelect',
     options: [
-      { value: 'male', display: 'זכר' },
-      { value: 'female', display: 'נקבה' },
-      { value: 'other', display: 'לא מעוניין לפרט' },
+      {
+        value: 'male',
+        display: 'זכר',
+        image: '../../../assets/images/male-white.png',
+        selectedImage: '../../../assets/images/male-blue.png',
+      },
+      {
+        value: 'female',
+        display: 'נקבה',
+        image: '../../../assets/images/female-white.png',
+        selectedImage: '../../../assets/images/female-blue.png',
+      },
+      { value: 'other', display: 'לא מעוניין/ת לפרט' },
     ],
     label: 'מין',
   },

@@ -13,8 +13,43 @@
 
   .text-input {
     text-align: right;
+    box-sizing: border-box;
+    width: 335px;
+    height: 51px;
+    padding: 8px 12px;
+    font-family: Opensanshebrew, sans-serif;
+    font-size: 17px;
     ::placeholder {
       text-align: right;
+    }
+  }
+
+  .gender-options-container {
+    display: flex;
+    flex-direction: row;
+
+    .gender-image {
+      cursor: pointer;
+    }
+
+    .other-option {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      cursor: pointer;
+      width: 141px;
+      height: 97px;
+      border: 0.3px solid lightgray;
+      background-color: white;
+      color: #0f2d6c;
+      font-size: 20px;
+      text-align: center;
+      margin-right: 2px;
+    }
+
+    .other-option.selected {
+      background-color: #0f2d6c;
+      color: white;
     }
   }
 }
