@@ -10,12 +10,18 @@ const routes: Routes = [
     path: 'registration',
     component: RegistrationComponent,
     children: [
-      { path: '', redirectTo: 'step-one', pathMatch: 'full' },
-      { path: 'step-one', component: StepOneComponent },
-      { path: 'step-two', component: StepTwoComponent },
+      { path: '', redirectTo: 'user/step-one', pathMatch: 'full' },
+
+      {
+        path: ':userType',
+        redirectTo: ':userType/step-one',
+        pathMatch: 'full',
+      },
+      { path: ':userType/step-one', component: StepOneComponent },
+      { path: ':userType/step-two', component: StepTwoComponent },
     ],
   },
-  { path: '', redirectTo: '/registration', pathMatch: 'full' },
+  { path: '', redirectTo: '/registration/user', pathMatch: 'full' },
 ];
 
 @NgModule({
