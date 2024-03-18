@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="registration-container" dir="rtl">
+  <app-step-one
+    *ngIf="currentStep === 1"
+    [formGroup]="registrationForm.get('stepOne')"
+    (nextStep)="goToNextStep()"
+  ></app-step-one>
+  <app-step-two
+    *ngIf="currentStep === 2"
+    [formGroup]="registrationForm.get('stepTwo')"
+    (nextStep)="goToNextStep()"
+    (prevStep)="goToPreviousStep()"
+  ></app-step-two>
+</div>

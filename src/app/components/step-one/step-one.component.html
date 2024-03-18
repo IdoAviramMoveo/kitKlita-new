@@ -1,0 +1,69 @@
+<!-- TODO: Move hardcoded texts to json file. -->
+<div class="step-main-container" [formGroup]="formGroup">
+  <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
+  <div class="form-container">
+    <ng-container *ngFor="let field of fields">
+      <div *ngIf="field.type === FieldType.DROPDOWN" class="dropdown-container">
+        <label>{{ field.label }}</label>
+        <button class="select-input" (click)="toggleDropdown(field.name)">
+          {{ getSelectedOptionDisplay(field) || "בחר" }}
+          <img class="arrow" src="./assets/images/select-arrow.png" />
+        </button>
+        <div *ngIf="dropdowns[field.name]" class="select-options">
+          <button
+            *ngFor="let option of field.options"
+            class="select-option"
+            (click)="selectOption(field.name, option.value)"
+          >
+            {{ option.display }}
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="field.type === FieldType.RADIO" class="radio-container">
+        <label>{{ field.label }}</label>
+        <div class="radio-options-container">
+          <div *ngFor="let option of field.options" class="radio-option">
+            <img
+              src="{{
+                formGroup.get(field.name).value === option.value
+                  ? option.selectedImage
+                  : option.image
+              }}"
+              (click)="formGroup.get(field.name).setValue(option.value)"
+            />
+            <span
+              class="option-text"
+              (click)="formGroup.get(field.name).setValue(option.value)"
+              >{{ option.display }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="field.type === FieldType.BOOLEAN" class="boolean-container">
+        <label>{{ field.label }}</label>
+        <div class="boolean-options-container">
+          <div
+            *ngFor="let option of field.options"
+            class="boolean-option"
+            (click)="formGroup.get(field.name).setValue(option.value)"
+          >
+            <img
+              src="{{
+                formGroup.get(field.name).value === option.value
+                  ? option.selectedImage
+                  : option.image
+              }}"
+            />
+            <span class="option-text">{{ option.display }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="actions-container">
+    <button type="button" (click)="onNext()" class="next-button">המשך</button>
+  </div>
+</div>
