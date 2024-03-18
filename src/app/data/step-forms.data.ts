@@ -1,9 +1,11 @@
+import { FieldType } from '../enums/field-types.enum';
+
 // TODO: Move hardcoded texts to json file.
 export const stepOneFields = [
   {
     name: 'desiredSector',
-    type: 'dropdown',
-    image: '../../../assets/images/select-arrow.svg',
+    type: FieldType.DROPDOWN,
+    image: './assets/images/select-arrow.svg',
     options: [
       { value: 'sector1', display: 'כח עזר' },
       { value: 'sector2', display: 'רופאים' },
@@ -15,8 +17,8 @@ export const stepOneFields = [
   },
   {
     name: 'desiredRole',
-    type: 'dropdown',
-    image: '../../../assets/images/select-arrow.svg',
+    type: FieldType.DROPDOWN,
+    image: './assets/images/select-arrow.svg',
     options: [
       { value: 'role1', display: 'אחראי/ת סניטרים' },
       { value: 'role2', display: 'גבסן/ית' },
@@ -26,7 +28,7 @@ export const stepOneFields = [
   },
   {
     name: 'hearAboutUs',
-    type: 'radio',
+    type: FieldType.RADIO,
     options: [
       {
         value: 'option1',
@@ -63,7 +65,7 @@ export const stepOneFields = [
   },
   {
     name: 'workedBefore',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: 'yes',
@@ -82,7 +84,7 @@ export const stepOneFields = [
   },
   {
     name: 'familyCloseness',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: 'yes',
@@ -104,32 +106,32 @@ export const stepOneFields = [
 export const stepTwoFields = [
   {
     name: 'firstName',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם פרטי',
   },
   {
     name: 'lastName',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם משפחה',
   },
   {
     name: 'firstNameEnglish',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם פרטי באנגלית',
   },
   {
     name: 'lastNameEnglish',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם משפחה באנגלית',
   },
   {
     name: 'id',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'תעודת זהות',
   },
   {
     name: 'gender',
-    type: 'genderSelect',
+    type: FieldType.GENDER_SELECT,
     options: [
       {
         value: 'male',
@@ -149,47 +151,47 @@ export const stepTwoFields = [
   },
   {
     name: 'countryOfBirth',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'ארץ לידה',
   },
   {
     name: 'immigrationYear',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'שנת עלייה',
   },
   {
     name: 'street',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'רחוב',
   },
   {
     name: 'houseNumber',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'בית/דירה',
   },
   {
     name: 'zipCode',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'מיקוד',
   },
   {
     name: 'mobilePhone',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'טלפון נייד',
   },
   {
     name: 'additionalPhone',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'טלפון נוסף (אופציונאלי)',
   },
   {
     name: 'email',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'כתובת דוא"ל',
   },
   {
     name: 'carOwner',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: true,
@@ -208,7 +210,7 @@ export const stepTwoFields = [
   },
   {
     name: 'hasDrivingLicense',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: true,

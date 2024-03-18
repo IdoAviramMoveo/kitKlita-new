@@ -4,14 +4,14 @@
   width: 100%;
   height: 100%;
   font-family: Opensanshebrew, sans-serif;
-  background-image: url("../../../assets/images/bg_image.jpg");
+  background-image: url("/assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
-  color: #343530;
+  color: $color-dark;
   font-size: 18px;
   font-weight: 700;
   @include xsmall {
@@ -26,7 +26,7 @@
       margin-right: 6%;
       font-size: 20pt;
       font-family: "Reforma", sans-serif;
-      color: #0f2d6c;
+      color: $color-primary-text;
       font-weight: 500;
       text-align: right;
     }
@@ -76,14 +76,14 @@
         height: 97px;
         border: 0.3px solid lightgray;
         background-color: white;
-        color: #0f2d6c;
+        color: $color-primary-text;
         font-size: 20px;
         text-align: center;
         margin-right: 2px;
       }
 
       .other-option.selected {
-        background-color: #0f2d6c;
+        background-color: $color-primary-text;
         color: white;
       }
     }
@@ -92,7 +92,7 @@
   .actions-container {
     display: flex;
     justify-content: space-between;
-    padding: 50px 6% 100px 6%;
+    padding: 7% 6% 5% 6%;
     @include xsmall {
       justify-content: center;
       width: 100%;
@@ -102,9 +102,12 @@
 
     .next-button {
       cursor: pointer;
-      background-color: #3898ec;
       color: white;
-      background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+      background-image: linear-gradient(
+        180deg,
+        $color-primary-text,
+        $color-primary-text
+      );
       width: 208px;
       height: 52px;
       font-family: Opensanshebrew, sans-serif;
@@ -117,8 +120,7 @@
     }
     .prev-button {
       cursor: pointer;
-      background-color: #3898ec;
-      color: #999;
+      color: $color-prev-button;
       background-image: linear-gradient(180deg, #fff, #fff);
       border: 1px solid #8f8f8f;
       width: 208px;

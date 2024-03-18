@@ -4,14 +4,14 @@
   width: 100%;
   height: 100%;
   font-family: Opensanshebrew, sans-serif;
-  background-image: url("../../../assets/images/bg_image.jpg");
+  background-image: url("/assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
-  color: #343530;
+  color: $color-dark;
   font-size: 18px;
   font-weight: 700;
   @include xsmall {
@@ -26,7 +26,7 @@
       margin-right: 6%;
       font-size: 20pt;
       font-family: "Reforma", sans-serif;
-      color: #0f2d6c;
+      color: $color-primary-text;
       font-weight: 500;
       text-align: right;
     }
@@ -50,7 +50,7 @@
         border: 1px solid #8f8f8f;
         background-color: white;
         font-family: Opensanshebrew, sans-serif;
-        color: #343530;
+        color: $color-dark;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -81,12 +81,12 @@
           min-height: 45px;
           padding: 5px 6px 2px;
           border: none;
-          background-color: rgba(255, 255, 255, 1);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          background-color: $color-white;
+          border-bottom: 1px solid $color-border;
           cursor: pointer;
 
           &:hover {
-            background-color: #f6f5f0;
+            background-color: $color-light;
           }
         }
       }
@@ -164,7 +164,7 @@
 
   .actions-container {
     width: 100%;
-    padding: 50px 6% 100px 6%;
+    padding: 7% 6% 5% 6%;
     @include xsmall {
       padding-right: 0;
       display: flex;
@@ -173,9 +173,12 @@
 
     .next-button {
       cursor: pointer;
-      background-color: #3898ec;
       color: white;
-      background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+      background-image: linear-gradient(
+        180deg,
+        $color-primary-text,
+        $color-primary-text
+      );
       width: 208px;
       height: 52px;
       font-family: Opensanshebrew, sans-serif;

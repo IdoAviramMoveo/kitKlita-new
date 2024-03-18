@@ -3,15 +3,15 @@
   <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
-      <div *ngIf="field.type === 'dropdown'" class="dropdown-container">
+      <div *ngIf="field.type === FieldType.DROPDOWN" class="dropdown-container">
         <label>{{ field.label }}</label>
         <button class="select-input" (click)="toggleDropdown(field.name)">
           {{ getSelectedOptionDisplay(field) || "בחר" }}
-          <img class="arrow" src="../../../assets/images/select-arrow.png" />
+          <img class="arrow" src="./assets/images/select-arrow.png" />
         </button>
         <div *ngIf="dropdowns[field.name]" class="select-options">
           <button
-            *ngFor="let option of field.options; let i = index; let last = last"
+            *ngFor="let option of field.options"
             class="select-option"
             (click)="selectOption(field.name, option.value)"
           >
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div *ngIf="field.type === 'radio'" class="radio-container">
+      <div *ngIf="field.type === FieldType.RADIO" class="radio-container">
         <label>{{ field.label }}</label>
         <div class="radio-options-container">
           <div *ngFor="let option of field.options" class="radio-option">
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div *ngIf="field.type === 'boolean'" class="boolean-container">
+      <div *ngIf="field.type === FieldType.BOOLEAN" class="boolean-container">
         <label>{{ field.label }}</label>
         <div class="boolean-options-container">
           <div

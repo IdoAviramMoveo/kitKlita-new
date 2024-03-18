@@ -3,7 +3,9 @@
   <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
-      <div *ngIf="field.type === 'text' || field.type === 'number'">
+      <div
+        *ngIf="field.type === FieldType.TEXT || field.type === FieldType.NUMBER"
+      >
         <input
           class="text-input"
           [type]="field.type"
@@ -12,7 +14,7 @@
         />
       </div>
 
-      <div *ngIf="field.type === 'radio'">
+      <div *ngIf="field.type === FieldType.RADIO">
         <label>{{ field.label }}</label>
         <ng-container *ngFor="let option of field.options">
           <label>
@@ -26,7 +28,10 @@
         </ng-container>
       </div>
 
-      <div *ngIf="field.type === 'genderSelect'" class="gender-selection">
+      <div
+        *ngIf="field.type === FieldType.GENDER_SELECT"
+        class="gender-selection"
+      >
         <label>{{ field.label }}</label>
         <div class="gender-options-container">
           <ng-container *ngFor="let option of field.options">

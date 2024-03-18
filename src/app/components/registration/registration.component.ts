@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
-import { UserType } from '../../data/enums.data';
+import { UserType } from '../../enums/user-types.enum';
+import { FieldType } from '../../enums/field-types.enum';
 
 @Component({
   selector: 'app-registration',
@@ -14,6 +15,7 @@ export class RegistrationComponent implements OnInit {
   userType: string;
   currentStep: number = 1;
 
+  FieldType = FieldType;
   stepOneFields = stepOneFields;
   stepTwoFields = stepTwoFields;
 
@@ -42,10 +44,8 @@ export class RegistrationComponent implements OnInit {
     }); // TODO: Add validators and type for each step
   }
 
-  initializeFormBasedOnUserType(userType: string) {
-    const type = UserType[userType as keyof typeof UserType];
-
-    switch (type) {
+  initializeFormBasedOnUserType(userType: UserType) {
+    switch (userType) {
       case UserType.GENERAL:
         break;
       case UserType.INTERN:
@@ -78,7 +78,5 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    console.log(this.registrationForm.value);
-  }
+  onSubmit() {}
 }
