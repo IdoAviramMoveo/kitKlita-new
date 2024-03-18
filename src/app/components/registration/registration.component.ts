@@ -46,13 +46,13 @@ export class RegistrationComponent implements OnInit {
     const type = UserType[userType as keyof typeof UserType];
 
     switch (type) {
-      case UserType.General:
+      case UserType.GENERAL:
         break;
-      case UserType.Intern:
+      case UserType.INTERN:
         break;
-      case UserType.Volunteer:
+      case UserType.VOLUNTEER:
         break;
-      case UserType.Independent:
+      case UserType.INDEPENDENT:
         break;
       default:
     }
