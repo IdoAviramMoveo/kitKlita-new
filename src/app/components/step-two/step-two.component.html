@@ -16,12 +16,24 @@
         <div
           *ngIf="
             formGroup.get(field.name).touched &&
-            formGroup.get(field.name).hasError('required')
+            formGroup.get(field.name).invalid
           "
           class="validation-message"
         >
           {{ field.errorMessage }}
         </div>
+      </div>
+
+      <div *ngIf="field.group" class="group-container">
+        <ng-container *ngFor="let subfield of field.fields">
+          <input
+            class="text-input"
+            [type]="subfield.type"
+            [formControlName]="subfield.name"
+            [placeholder]="subfield.label"
+          />
+          <!-- Error message logic -->
+        </ng-container>
       </div>
 
       <div *ngIf="field.type === 'radio'">

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
 import { UserType } from '../../data/enums.data';
+import { buildFormControls } from '../../utils/form-validators.util';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ import { UserType } from '../../data/enums.data';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
-  currentStep: number = 1;
+  currentStep: number = 2;
 
   stepOneFields = stepOneFields;
   stepTwoFields = stepTwoFields;
@@ -37,8 +38,8 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registrationForm = this.fb.group({
-      stepOne: this.fb.group(this.buildFormControls(this.stepOneFields)),
-      stepTwo: this.fb.group(this.buildFormControls(this.stepTwoFields)),
+      stepOne: this.fb.group(buildFormControls(this.stepOneFields)),
+      stepTwo: this.fb.group(buildFormControls(this.stepTwoFields)),
     }); // TODO: Add validators and type for each step
   }
 

@@ -37,7 +37,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 57%;
-    // gap: 45px;
     margin-right: 6%;
     @include xsmall {
       justify-content: center;
@@ -52,6 +51,63 @@
       height: 81px;
       margin: 20px 0 0;
       margin-left: 45px;
+
+      .text-input {
+        text-align: right;
+        box-sizing: border-box;
+        width: 335px;
+        height: 50px;
+        padding: 8px 12px;
+        font-family: Opensanshebrew, sans-serif;
+        font-size: 17px;
+        ::placeholder {
+          text-align: right;
+        }
+      }
+    }
+
+    .small-text-input-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      height: 81px;
+      margin: 20px 0 0;
+      margin-left: 23px;
+
+      .small-text-input {
+        text-align: right;
+        box-sizing: border-box;
+        width: 228px;
+        height: 50px;
+        padding: 8px 12px;
+        font-family: Opensanshebrew, sans-serif;
+        font-size: 17px;
+        ::placeholder {
+          text-align: right;
+        }
+      }
+    }
+
+    .small-number-input-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      height: 81px;
+      margin: 20px 0 0;
+      margin-left: 45px;
+
+      .small-number-input {
+        text-align: right;
+        box-sizing: border-box;
+        width: 84px;
+        height: 50px;
+        padding: 8px 12px;
+        font-family: Opensanshebrew, sans-serif;
+        font-size: 16px;
+        ::placeholder {
+          text-align: right;
+        }
+      }
     }
 
     .validation-message {
@@ -62,19 +118,6 @@
       margin-bottom: 8px;
       color: red;
       font-weight: 300;
-    }
-
-    .text-input {
-      text-align: right;
-      box-sizing: border-box;
-      width: 335px;
-      height: 50px;
-      padding: 8px 12px;
-      font-family: Opensanshebrew, sans-serif;
-      font-size: 17px;
-      ::placeholder {
-        text-align: right;
-      }
     }
 
     .gender-options-container {
