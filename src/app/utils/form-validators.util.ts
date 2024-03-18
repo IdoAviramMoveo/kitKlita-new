@@ -1,4 +1,10 @@
-import { Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import {
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  FormGroup,
+  FormControl,
+} from '@angular/forms';
 
 export function hebrewCharactersValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -62,36 +68,56 @@ export function zipCodeValidator(): ValidatorFn {
 
 export function buildFormControls(fields) {
   const group = {};
+
   fields.forEach((field) => {
-    let validators = [Validators.required];
-    if (field.validationRules) {
-      field.validationRules.forEach((rule) => {
-        switch (rule) {
-          case 'email':
-            validators.push(Validators.email);
-            break;
-          case 'hebrew':
-            validators.push(hebrewCharactersValidator());
-            break;
-          case 'english':
-            validators.push(englishCharactersValidator());
-            break;
-          case 'year':
-            validators.push(yearValidator());
-            break;
-          case 'phoneNumber':
-            validators.push(phoneNumberValidator());
-            break;
-          case 'israeliID':
-            validators.push(israeliIDValidator());
-            break;
-          case 'zipCode':
-            validators.push(zipCodeValidator());
-            break;
-        }
+    if (field.group && field.fields) {
+      const subGroup = {};
+      field.fields.forEach((subField) => {
+        subGroup[subField.name] = createControl(subField);
       });
+      group[field.group] = new FormGroup(subGroup);
+    } else {
+      group[field.name] = createControl(field);
     }
-    group[field.name] = ['', Validators.compose(validators)];
   });
+
   return group;
+}
+
+function createControl(field) {
+  let validators = [Validators.required];
+  if (field.validationRules) {
+    validators = validators.concat(getValidators(field.validationRules));
+  }
+  return new FormControl('', Validators.compose(validators));
+}
+
+function getValidators(rules) {
+  const validators = [];
+  rules.forEach((rule) => {
+    switch (rule) {
+      case 'email':
+        validators.push(Validators.email);
+        break;
+      case 'hebrew':
+        validators.push(hebrewCharactersValidator());
+        break;
+      case 'english':
+        validators.push(englishCharactersValidator());
+        break;
+      case 'year':
+        validators.push(yearValidator());
+        break;
+      case 'phoneNumber':
+        validators.push(phoneNumberValidator());
+        break;
+      case 'israeliID':
+        validators.push(israeliIDValidator());
+        break;
+      case 'zipCode':
+        validators.push(zipCodeValidator());
+        break;
+    }
+  });
+  return validators;
 }

@@ -24,15 +24,28 @@
         </div>
       </div>
 
-      <div *ngIf="field.group" class="group-container">
-        <ng-container *ngFor="let subfield of field.fields">
-          <input
-            class="text-input"
-            [type]="subfield.type"
-            [formControlName]="subfield.name"
-            [placeholder]="subfield.label"
-          />
-          <!-- Error message logic -->
+      <div *ngIf="field.group" formGroupName="address" class="group-container">
+        <ng-container *ngFor="let subfield of field.fields; let i = index">
+          <div class="address-input-container">
+            <input
+              [ngClass]="{
+                'first-input': i === 0,
+                'last-input': i === field.fields.length - 1
+              }"
+              [type]="subfield.type"
+              [formControlName]="subfield.name"
+              [placeholder]="subfield.label"
+            />
+            <div
+              *ngIf="
+                formGroup.get('address').get(subfield.name).touched &&
+                formGroup.get('address').get(subfield.name).invalid
+              "
+              class="validation-message"
+            >
+              {{ subfield.errorMessage }}
+            </div>
+          </div>
         </ng-container>
       </div>
 

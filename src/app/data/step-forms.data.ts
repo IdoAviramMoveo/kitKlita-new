@@ -177,36 +177,23 @@ export const stepTwoFields = [
     validationRules: ['year'],
   },
   {
-    name: 'street',
-    type: 'small-text',
-    label: 'רחוב',
-    errorMessage: '* נא להזין רחוב',
-    validationRules: ['hebrew'],
+    group: 'address',
+    fields: [
+      {
+        name: 'street',
+        type: 'text',
+        label: 'רחוב',
+        errorMessage: '* נא להזין רחוב',
+        validationRules: ['hebrew'],
+      },
+      {
+        name: 'houseNumber',
+        type: 'number',
+        label: 'בית/דירה',
+        errorMessage: '* יש להזין מספר בית',
+      },
+    ],
   },
-  {
-    name: 'houseNumber',
-    type: 'small-number',
-    label: 'דירה/בית',
-    errorMessage: '* יש להזין מספר בית',
-  },
-  // {
-  //   group: 'address',
-  //   fields: [
-  //     {
-  //       name: 'street',
-  //       type: 'text',
-  //       label: 'רחוב',
-  //       errorMessage: '* נא להזין רחוב',
-  //       validationRules: ['hebrew'],
-  //     },
-  //     {
-  //       name: 'houseNumber',
-  //       type: 'number',
-  //       label: 'בית/דירה',
-  //       errorMessage: '* יש להזין מספר בית',
-  //     },
-  //   ],
-  // },
   {
     name: 'city',
     type: 'text',
