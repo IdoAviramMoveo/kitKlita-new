@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
 import { UserType } from '../../data/enums.data';
@@ -61,7 +61,7 @@ export class RegistrationComponent implements OnInit {
   buildFormControls(fields) {
     const group = {};
     fields.forEach((field) => {
-      group[field.name] = [''];
+      group[field.name] = ['', Validators.required];
     });
     return group;
   }

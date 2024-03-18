@@ -36,13 +36,32 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 45px;
     width: 57%;
+    // gap: 45px;
     margin-right: 6%;
     @include xsmall {
       justify-content: center;
       flex-direction: column;
       flex-wrap: nowrap;
+    }
+
+    .text-input-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      height: 81px;
+      margin: 20px 0 0;
+      margin-left: 45px;
+    }
+
+    .validation-message {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      line-height: 20px;
+      font-size: 14px;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      color: red;
+      font-weight: 300;
     }
 
     .text-input {
@@ -87,6 +106,45 @@
         color: white;
       }
     }
+
+    .boolean-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0 0;
+
+      .boolean-options-container {
+        display: flex;
+        flex-direction: row;
+        gap: 35px;
+
+        margin-left: 45px;
+
+        .boolean-option {
+          height: 52px;
+          width: 150px;
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .boolean-option img {
+          height: 52px;
+          width: 150px;
+        }
+
+        .option-text {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: black;
+          font-weight: bold;
+          pointer-events: none;
+          font-weight: 400;
+        }
+      }
+    }
   }
 
   .actions-container {
@@ -101,10 +159,7 @@
     }
 
     .next-button {
-      cursor: pointer;
-      background-color: #3898ec;
       color: white;
-      background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
       width: 208px;
       height: 52px;
       font-family: Opensanshebrew, sans-serif;
@@ -114,7 +169,18 @@
         height: 64px;
         width: 47%;
       }
+      &:disabled {
+        cursor: not-allowed;
+        color: #c2c3c6;
+        background-color: #f0f0ef;
+        border: 0;
+      }
+      &:enabled {
+        background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+        cursor: pointer;
+      }
     }
+
     .prev-button {
       cursor: pointer;
       background-color: #3898ec;

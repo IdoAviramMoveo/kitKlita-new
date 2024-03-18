@@ -12,6 +12,7 @@ export const stepOneFields = [
       { value: 'sector5', display: 'מתנדבים' },
     ],
     label: 'בחר סקטור מיועד',
+    errorMessage: '',
   },
   {
     name: 'desiredRole',
@@ -23,6 +24,7 @@ export const stepOneFields = [
       { value: 'role3', display: 'כח עזר' },
     ],
     label: 'בחר תפקיד מיועד',
+    errorMessage: '',
   },
   {
     name: 'hearAboutUs',
@@ -60,6 +62,7 @@ export const stepOneFields = [
       },
     ],
     label: 'היכן נחשפת למשרה או לעבודה באסותא?',
+    errorMessage: '',
   },
   {
     name: 'workedBefore',
@@ -79,6 +82,7 @@ export const stepOneFields = [
       },
     ],
     label: 'האם עבדת באסותא בעבר?',
+    errorMessage: '',
   },
   {
     name: 'familyCloseness',
@@ -98,6 +102,7 @@ export const stepOneFields = [
       },
     ],
     label: 'האם הנך בעל קרבה משפחתית לעובד אסותא?',
+    errorMessage: '',
   },
 ];
 
@@ -106,26 +111,31 @@ export const stepTwoFields = [
     name: 'firstName',
     type: 'text',
     label: 'שם פרטי',
+    errorMessage: '* יש למלא שם פרטי בעברית בלבד',
   },
   {
     name: 'lastName',
     type: 'text',
     label: 'שם משפחה',
+    errorMessage: '* יש למלא שם משפחה בעברית בלבד',
   },
   {
     name: 'firstNameEnglish',
     type: 'text',
     label: 'שם פרטי באנגלית',
+    errorMessage: '* יש למלא שם פרטי באנגלית',
   },
   {
     name: 'lastNameEnglish',
     type: 'text',
     label: 'שם משפחה באנגלית',
+    errorMessage: '* יש למלא שם משפחה בעברית',
   },
   {
     name: 'id',
     type: 'text',
     label: 'תעודת זהות',
+    errorMessage: '* יש להזין מספר תעודת זהות כולל ספרת ביקורת',
   },
   {
     name: 'gender',
@@ -146,46 +156,55 @@ export const stepTwoFields = [
       { value: 'other', display: 'לא מעוניין/ת לפרט' },
     ],
     label: 'מין',
+    errorMessage: '',
   },
   {
     name: 'countryOfBirth',
     type: 'text',
     label: 'ארץ לידה',
+    errorMessage: '* יש לבחור ארץ לידה מהרשימה',
   },
   {
     name: 'immigrationYear',
     type: 'number',
     label: 'שנת עלייה',
+    errorMessage: '',
   },
   {
     name: 'street',
     type: 'text',
     label: 'רחוב',
+    errorMessage: '* נא להזין רחוב',
   },
   {
     name: 'houseNumber',
-    type: 'text',
+    type: 'number',
     label: 'בית/דירה',
+    errorMessage: '* יש להזין מספר בית',
   },
   {
     name: 'zipCode',
-    type: 'text',
+    type: 'number',
     label: 'מיקוד',
+    errorMessage: '',
   },
   {
     name: 'mobilePhone',
     type: 'text',
     label: 'טלפון נייד',
+    errorMessage: '',
   },
   {
     name: 'additionalPhone',
     type: 'text',
     label: 'טלפון נוסף (אופציונאלי)',
+    errorMessage: '* יש להזין מספר טלפון נייד תקין',
   },
   {
     name: 'email',
     type: 'text',
     label: 'כתובת דוא"ל',
+    errorMessage: '* יש להזין כתובת דואר אלקטרוני',
   },
   {
     name: 'carOwner',
@@ -205,6 +224,7 @@ export const stepTwoFields = [
       },
     ],
     label: 'בעל רכב',
+    errorMessage: '',
   },
   {
     name: 'hasDrivingLicense',
@@ -224,5 +244,6 @@ export const stepTwoFields = [
       },
     ],
     label: 'רישיון נהיגה',
+    errorMessage: '',
   },
 ];

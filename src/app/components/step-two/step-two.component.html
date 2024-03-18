@@ -3,13 +3,25 @@
   <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
-      <div *ngIf="field.type === 'text' || field.type === 'number'">
+      <div
+        *ngIf="field.type === 'text' || field.type === 'number'"
+        class="text-input-container"
+      >
         <input
           class="text-input"
           [type]="field.type"
           [formControlName]="field.name"
           [placeholder]="field.label"
         />
+        <div
+          *ngIf="
+            formGroup.get(field.name).touched &&
+            formGroup.get(field.name).hasError('required')
+          "
+          class="validation-message"
+        >
+          {{ field.errorMessage }}
+        </div>
       </div>
 
       <div *ngIf="field.type === 'radio'">
@@ -52,10 +64,37 @@
           </ng-container>
         </div>
       </div>
+
+      <div *ngIf="field.type === 'boolean'" class="boolean-container">
+        <label>{{ field.label }}</label>
+        <div class="boolean-options-container">
+          <div
+            *ngFor="let option of field.options"
+            class="boolean-option"
+            (click)="formGroup.get(field.name).setValue(option.value)"
+          >
+            <img
+              src="{{
+                formGroup.get(field.name).value === option.value
+                  ? option.selectedImage
+                  : option.image
+              }}"
+            />
+            <span class="option-text">{{ option.display }}</span>
+          </div>
+        </div>
+      </div>
     </ng-container>
   </div>
   <div class="actions-container">
     <button type="button" (click)="onPrev()" class="prev-button">חזור</button>
-    <button type="button" (click)="onNext()" class="next-button">המשך</button>
+    <button
+      type="button"
+      (click)="onNext()"
+      [disabled]="!formGroup.valid"
+      class="next-button"
+    >
+      המשך
+    </button>
   </div>
 </div>

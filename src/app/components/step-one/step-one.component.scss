@@ -172,8 +172,6 @@
     }
 
     .next-button {
-      cursor: pointer;
-      background-color: #3898ec;
       color: white;
       background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
       width: 208px;
@@ -183,6 +181,16 @@
       font-weight: 700;
       @include xsmall {
         width: 98%;
+      }
+      &:disabled {
+        cursor: not-allowed;
+        color: #c2c3c6;
+        background-color: #f0f0ef;
+        border: 0;
+      }
+      &:enabled {
+        background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+        cursor: pointer;
       }
     }
   }
