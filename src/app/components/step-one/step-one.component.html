@@ -3,6 +3,21 @@
   <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
+      <div
+        *ngIf="
+          (field.type === FieldType.TEXT || field.type === FieldType.NUMBER) &&
+          shouldDisplayField(field)
+        "
+        class="text-input-container"
+      >
+        <input
+          class="text-input"
+          [type]="field.type"
+          [formControlName]="field.name"
+          [placeholder]="field.label"
+        />
+      </div>
+
       <div *ngIf="field.type === FieldType.DROPDOWN" class="dropdown-container">
         <label>{{ field.label }}</label>
         <button class="select-input" (click)="toggleDropdown(field.name)">

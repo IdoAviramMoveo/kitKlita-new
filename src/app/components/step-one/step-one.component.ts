@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { stepOneFields } from '../../data/step-forms.data';
 import { FieldType } from '../../enums/field-types.enum';
+import { FormField, FormGroupFields } from '../../models/form-fields.model';
 
 @Component({
   selector: 'app-step-one',
@@ -35,6 +36,32 @@ export class StepOneComponent implements OnInit {
       (option) => option.value === selectedValue
     );
     return selectedOption ? selectedOption.display : null;
+  }
+
+  shouldDisplayField(field: FormField | FormGroupFields): boolean {
+    if (!('displayCondition' in field) || !field.displayCondition) {
+      return true;
+    }
+
+    const condition = field.displayCondition;
+    const dependentControl = this.formGroup.get(condition.dependsOn);
+
+    const hasValue =
+      dependentControl &&
+      dependentControl.value !== null &&
+      dependentControl.value !== undefined &&
+      dependentControl.value !== '';
+
+    if (hasValue) {
+      if (condition.notEquals !== undefined) {
+        return condition.notEquals
+          ? dependentControl.value !== condition.value
+          : dependentControl.value === condition.value;
+      }
+      return dependentControl.value === condition.value;
+    }
+
+    return false;
   }
 
   onNext() {

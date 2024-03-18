@@ -16,6 +16,7 @@ export const stepOneFields: FormField[] = [
     ],
     label: 'בחר סקטור מיועד',
     errorMessage: '',
+    required: true,
   },
   {
     name: 'desiredRole',
@@ -28,6 +29,7 @@ export const stepOneFields: FormField[] = [
     ],
     label: 'בחר תפקיד מיועד',
     errorMessage: '',
+    required: true,
   },
   {
     name: 'hearAboutUs',
@@ -66,6 +68,19 @@ export const stepOneFields: FormField[] = [
     ],
     label: 'היכן נחשפת למשרה או לעבודה באסותא?',
     errorMessage: '',
+    required: true,
+  },
+  {
+    name: 'specify',
+    type: FieldType.TEXT,
+    label: 'פרט',
+    errorMessage: '* יש למלא שם פרטי בעברית בלבד',
+    required: false,
+    displayCondition: {
+      dependsOn: 'hearAboutUs',
+      value: 'option5',
+      notEquals: true,
+    },
   },
   {
     name: 'workedBefore',
@@ -86,6 +101,7 @@ export const stepOneFields: FormField[] = [
     ],
     label: 'האם עבדת באסותא בעבר?',
     errorMessage: '',
+    required: true,
   },
   {
     name: 'familyCloseness',
@@ -106,6 +122,7 @@ export const stepOneFields: FormField[] = [
     ],
     label: 'האם הנך בעל קרבה משפחתית לעובד אסותא?',
     errorMessage: '',
+    required: true,
   },
 ];
 
@@ -116,6 +133,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'שם פרטי',
     errorMessage: '* יש למלא שם פרטי בעברית בלבד',
     validationRules: ['hebrew'],
+    required: true,
   },
   {
     name: 'lastName',
@@ -123,6 +141,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'שם משפחה',
     errorMessage: '* יש למלא שם משפחה בעברית בלבד',
     validationRules: ['hebrew'],
+    required: true,
   },
   {
     name: 'firstNameEnglish',
@@ -130,6 +149,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'שם פרטי באנגלית',
     errorMessage: '* יש למלא שם פרטי באנגלית',
     validationRules: ['english'],
+    required: true,
   },
   {
     name: 'lastNameEnglish',
@@ -137,6 +157,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'שם משפחה באנגלית',
     errorMessage: '* יש למלא שם משפחה בעברית',
     validationRules: ['english'],
+    required: true,
   },
   {
     name: 'id',
@@ -144,6 +165,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'תעודת זהות',
     errorMessage: '* יש להזין מספר תעודת זהות כולל ספרת ביקורת',
     validationRules: ['israeliID'],
+    required: true,
   },
   {
     name: 'gender',
@@ -165,12 +187,14 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     ],
     label: 'מין',
     errorMessage: '',
+    required: true,
   },
   {
     name: 'countryOfBirth',
     type: FieldType.TEXT,
     label: 'ארץ לידה',
     errorMessage: '* יש לבחור ארץ לידה מהרשימה',
+    required: true,
   },
   {
     name: 'immigrationYear',
@@ -178,6 +202,12 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'שנת עלייה',
     errorMessage: '',
     validationRules: ['year'],
+    required: true,
+    displayCondition: {
+      dependsOn: 'countryOfBirth',
+      value: 'ישראל',
+      notEquals: true,
+    },
   },
   {
     group: 'address',
@@ -188,12 +218,14 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
         label: 'רחוב',
         errorMessage: '* נא להזין רחוב',
         validationRules: ['hebrew'],
+        required: true,
       },
       {
         name: 'houseNumber',
         type: FieldType.NUMBER,
         label: 'בית/דירה',
         errorMessage: '* יש להזין מספר בית',
+        required: true,
       },
     ],
   },
@@ -203,6 +235,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'עיר',
     errorMessage: '* יש לבחור עיר מהרשימה',
     validationRules: ['hebrew'],
+    required: true,
   },
   {
     name: 'zipCode',
@@ -210,6 +243,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'מיקוד',
     errorMessage: '* נא להזין מיקוד תקין',
     validationRules: ['zipCode'],
+    required: true,
   },
   {
     name: 'mobilePhone',
@@ -217,12 +251,14 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'טלפון נייד',
     errorMessage: '* יש להזין מספר טלפון נייד תקין',
     validationRules: ['phoneNumber'],
+    required: true,
   },
   {
     name: 'additionalPhone',
     type: FieldType.NUMBER,
     label: 'טלפון נוסף (אופציונאלי)',
     errorMessage: '* יש להזין מספר טלפון נייד תקין',
+    required: false,
   },
   {
     name: 'email',
@@ -230,6 +266,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     label: 'כתובת דוא"ל',
     errorMessage: '* יש להזין כתובת דואר אלקטרוני',
     validationRules: ['email'],
+    required: true,
   },
   {
     name: 'carOwner',
@@ -250,6 +287,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     ],
     label: 'בעל רכב',
     errorMessage: '',
+    required: true,
   },
   {
     name: 'hasDrivingLicense',
@@ -270,5 +308,6 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     ],
     label: 'רישיון נהיגה',
     errorMessage: '',
+    required: true,
   },
 ];

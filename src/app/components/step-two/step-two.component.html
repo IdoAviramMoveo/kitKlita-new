@@ -8,10 +8,12 @@
         class="text-input-container"
       >
         <input
+          *ngIf="shouldDisplayField(field)"
           class="text-input"
           [type]="field.type"
           [formControlName]="field.name"
           [placeholder]="field.label"
+          (blur)="onFieldBlur(field.name)"
         />
         <div
           *ngIf="

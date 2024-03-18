@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
+import { FormField, FormGroupFields } from '../models/form-fields.model';
 
 export function hebrewCharactersValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -66,58 +67,141 @@ export function zipCodeValidator(): ValidatorFn {
   };
 }
 
-export function buildFormControls(fields) {
-  const group = {};
+// export function buildFormControls(fields) {
+//   const group = {};
+
+//   fields.forEach((field) => {
+//     if (field.group && field.fields) {
+//       const subGroup = {};
+//       field.fields.forEach((subField) => {
+//         subGroup[subField.name] = createControl(subField);
+//       });
+//       group[field.group] = new FormGroup(subGroup);
+//     } else {
+//       group[field.name] = createControl(field);
+//     }
+//   });
+
+//   return group;
+// }
+
+// function createControl(field) {
+//   let validators = [Validators.required];
+//   if (field.validationRules) {
+//     validators = validators.concat(getValidators(field.validationRules));
+//   }
+//   return new FormControl('', Validators.compose(validators));
+// }
+
+// function getValidators(rules) {
+//   const validators = [];
+//   rules.forEach((rule) => {
+//     switch (rule) {
+//       case 'email':
+//         validators.push(Validators.email);
+//         break;
+//       case 'hebrew':
+//         validators.push(hebrewCharactersValidator());
+//         break;
+//       case 'english':
+//         validators.push(englishCharactersValidator());
+//         break;
+//       case 'year':
+//         validators.push(yearValidator());
+//         break;
+//       case 'phoneNumber':
+//         validators.push(phoneNumberValidator());
+//         break;
+//       case 'israeliID':
+//         validators.push(israeliIDValidator());
+//         break;
+//       case 'zipCode':
+//         validators.push(zipCodeValidator());
+//         break;
+//     }
+//   });
+//   return validators;
+// }
+
+function isFormField(field: FormField | FormGroupFields): field is FormField {
+  return 'type' in field;
+}
+
+export function buildFormControls(fields: (FormField | FormGroupFields)[]): {
+  [key: string]: AbstractControl;
+} {
+  const group: { [key: string]: AbstractControl } = {};
 
   fields.forEach((field) => {
-    if (field.group && field.fields) {
-      const subGroup = {};
+    if ('group' in field && field.fields) {
+      const subGroup: { [key: string]: AbstractControl } = {};
       field.fields.forEach((subField) => {
-        subGroup[subField.name] = createControl(subField);
+        if (isFormField(subField)) {
+          subGroup[subField.name] = createControl(subField);
+        }
       });
-      group[field.group] = new FormGroup(subGroup);
-    } else {
+      group[field.group!] = new FormGroup(subGroup);
+    } else if (isFormField(field)) {
       group[field.name] = createControl(field);
+    }
+  });
+
+  // Apply conditional logic after all fields have been initialized
+  fields.forEach((field) => {
+    if (isFormField(field) && field.displayCondition) {
+      handleDisplayCondition(field, group);
     }
   });
 
   return group;
 }
 
-function createControl(field) {
-  let validators = [Validators.required];
+function createControl(field: FormField): FormControl {
+  let validators: ValidatorFn[] = field.required ? [Validators.required] : [];
+
   if (field.validationRules) {
     validators = validators.concat(getValidators(field.validationRules));
   }
+
   return new FormControl('', Validators.compose(validators));
 }
 
-function getValidators(rules) {
-  const validators = [];
-  rules.forEach((rule) => {
+function getValidators(rules: string[]): ValidatorFn[] {
+  const validators: ValidatorFn[] = rules.map((rule) => {
     switch (rule) {
       case 'email':
-        validators.push(Validators.email);
-        break;
+        return Validators.email;
       case 'hebrew':
-        validators.push(hebrewCharactersValidator());
-        break;
+        return hebrewCharactersValidator();
       case 'english':
-        validators.push(englishCharactersValidator());
-        break;
+        return englishCharactersValidator();
       case 'year':
-        validators.push(yearValidator());
-        break;
+        return yearValidator();
       case 'phoneNumber':
-        validators.push(phoneNumberValidator());
-        break;
+        return phoneNumberValidator();
       case 'israeliID':
-        validators.push(israeliIDValidator());
-        break;
+        return israeliIDValidator();
       case 'zipCode':
-        validators.push(zipCodeValidator());
-        break;
+        return zipCodeValidator();
+      default:
+        return () => null;
     }
   });
   return validators;
+}
+
+function handleDisplayCondition(
+  field: FormField,
+  group: { [key: string]: AbstractControl }
+) {
+  // This example assumes `displayCondition` has been properly typed and exists in FormField
+  const condition = field.displayCondition!;
+  const dependsOnControl = group[condition.dependsOn];
+
+  if (dependsOnControl) {
+    dependsOnControl.valueChanges.subscribe(() => {
+      // Implement your conditional logic here, adjusting visibility/validity as needed
+      // This is a placeholder for where you would adjust the form control based on condition
+    });
+  }
 }

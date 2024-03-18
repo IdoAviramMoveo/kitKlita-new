@@ -1,5 +1,11 @@
 import { FieldType } from '../enums/field-types.enum';
 
+interface FormCondition {
+  dependsOn: string;
+  value: any;
+  notEquals?: boolean;
+}
+
 export interface FormOption {
   value: string | boolean | number;
   display: string;
@@ -15,6 +21,8 @@ export interface FormField {
   options?: FormOption[];
   errorMessage?: string;
   validationRules?: string[];
+  required?: boolean;
+  displayCondition?: FormCondition;
 }
 
 export interface FormGroupFields {
