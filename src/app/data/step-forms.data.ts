@@ -1,3 +1,4 @@
+// TODO: Move hardcoded texts to json file.
 export const stepOneFields = [
   {
     name: 'desiredSector',
