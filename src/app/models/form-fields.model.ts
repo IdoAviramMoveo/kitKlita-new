@@ -1,6 +1,6 @@
 import { FieldType } from '../enums/field-types.enum';
 
-interface FormOption {
+export interface FormOption {
   value: string | boolean | number;
   display: string;
   image?: string;

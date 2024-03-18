@@ -4,7 +4,7 @@
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
       <div
-        *ngIf="field.type === 'text' || field.type === 'number'"
+        *ngIf="field.type === FieldType.TEXT || field.type === FieldType.NUMBER"
         class="text-input-container"
       >
         <input
@@ -49,7 +49,7 @@
         </ng-container>
       </div>
 
-      <div *ngIf="field.type === 'radio'">
+      <div *ngIf="field.type === FieldType.RADIO">
         <label>{{ field.label }}</label>
         <ng-container *ngFor="let option of field.options">
           <label>
@@ -63,7 +63,10 @@
         </ng-container>
       </div>
 
-      <div *ngIf="field.type === 'genderSelect'" class="gender-selection">
+      <div
+        *ngIf="field.type === FieldType.GENDER_SELECT"
+        class="gender-selection"
+      >
         <label>{{ field.label }}</label>
         <div class="gender-options-container">
           <ng-container *ngFor="let option of field.options">
@@ -90,7 +93,7 @@
         </div>
       </div>
 
-      <div *ngIf="field.type === 'boolean'" class="boolean-container">
+      <div *ngIf="field.type === FieldType.BOOLEAN" class="boolean-container">
         <label>{{ field.label }}</label>
         <div class="boolean-options-container">
           <div
@@ -111,6 +114,7 @@
       </div>
     </ng-container>
   </div>
+
   <div class="actions-container">
     <button type="button" (click)="onPrev()" class="prev-button">חזור</button>
     <button

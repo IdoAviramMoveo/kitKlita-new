@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
 import { UserType } from '../../enums/user-types.enum';
 import { buildFormControls } from '../../utils/form-validators.util';
-import { FieldType } from '../../enums/field-types.enum';
 import { FormField, FormGroupFields } from '../../models/form-fields.model';
 
 @Component({
@@ -15,7 +14,7 @@ import { FormField, FormGroupFields } from '../../models/form-fields.model';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
-  currentStep: number = 2;
+  currentStep: number = 1;
 
   stepOneFields: FormField[] = stepOneFields;
   stepTwoFields: (FormField | FormGroupFields)[] = stepTwoFields;
@@ -31,6 +30,7 @@ export class RegistrationComponent implements OnInit {
       const type = params['userType'];
       if (type && Object.values(UserType).includes(type as UserType)) {
         this.userType = type;
+        console.log(this.userType);
         this.initializeForm();
       } else {
         this.router.navigate(['/registration/general']);
@@ -45,10 +45,8 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  initializeFormBasedOnUserType(userType: string) {
-    const type = UserType[userType as keyof typeof UserType];
-
-    switch (type) {
+  initializeFormBasedOnUserType(userType: UserType) {
+    switch (userType) {
       case UserType.GENERAL:
         break;
       case UserType.INTERN:
@@ -81,7 +79,5 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    console.log(this.registrationForm.value);
-  }
+  onSubmit() {}
 }

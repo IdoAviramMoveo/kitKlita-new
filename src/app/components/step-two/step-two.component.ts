@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { stepTwoFields } from '../../data/step-forms.data';
+import { FieldType } from '../../enums/field-types.enum';
 
 @Component({
   selector: 'app-step-two',
@@ -12,6 +13,7 @@ export class StepTwoComponent implements OnInit {
   @Output() nextStep = new EventEmitter<void>();
   @Output() prevStep = new EventEmitter<void>();
 
+  FieldType = FieldType;
   fields = stepTwoFields;
 
   ngOnInit() {

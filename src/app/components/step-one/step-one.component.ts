@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { stepOneFields } from '../../data/step-forms.data';
+import { FieldType } from '../../enums/field-types.enum';
 
 @Component({
   selector: 'app-step-one',
@@ -11,6 +12,7 @@ export class StepOneComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Output() nextStep = new EventEmitter<void>();
 
+  FieldType = FieldType;
   fields = stepOneFields;
   dropdowns: { [key: string]: boolean } = {};
 
