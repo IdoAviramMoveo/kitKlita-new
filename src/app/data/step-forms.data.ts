@@ -1,8 +1,11 @@
+import { FormField, FormGroupFields } from '../models/form-fields.model';
+import { FieldType } from '../enums/field-types.enum';
+
 // TODO: Move hardcoded texts to json file.
-export const stepOneFields = [
+export const stepOneFields: FormField[] = [
   {
     name: 'desiredSector',
-    type: 'dropdown',
+    type: FieldType.DROPDOWN,
     image: '../../../assets/images/select-arrow.svg',
     options: [
       { value: 'sector1', display: 'כח עזר' },
@@ -16,7 +19,7 @@ export const stepOneFields = [
   },
   {
     name: 'desiredRole',
-    type: 'dropdown',
+    type: FieldType.DROPDOWN,
     image: '../../../assets/images/select-arrow.svg',
     options: [
       { value: 'role1', display: 'אחראי/ת סניטרים' },
@@ -28,7 +31,7 @@ export const stepOneFields = [
   },
   {
     name: 'hearAboutUs',
-    type: 'radio',
+    type: FieldType.RADIO,
     options: [
       {
         value: 'option1',
@@ -66,7 +69,7 @@ export const stepOneFields = [
   },
   {
     name: 'workedBefore',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: 'yes',
@@ -86,7 +89,7 @@ export const stepOneFields = [
   },
   {
     name: 'familyCloseness',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: 'yes',
@@ -106,45 +109,45 @@ export const stepOneFields = [
   },
 ];
 
-export const stepTwoFields = [
+export const stepTwoFields: (FormField | FormGroupFields)[] = [
   {
     name: 'firstName',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם פרטי',
     errorMessage: '* יש למלא שם פרטי בעברית בלבד',
     validationRules: ['hebrew'],
   },
   {
     name: 'lastName',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם משפחה',
     errorMessage: '* יש למלא שם משפחה בעברית בלבד',
     validationRules: ['hebrew'],
   },
   {
     name: 'firstNameEnglish',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם פרטי באנגלית',
     errorMessage: '* יש למלא שם פרטי באנגלית',
     validationRules: ['english'],
   },
   {
     name: 'lastNameEnglish',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'שם משפחה באנגלית',
     errorMessage: '* יש למלא שם משפחה בעברית',
     validationRules: ['english'],
   },
   {
     name: 'id',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'תעודת זהות',
     errorMessage: '* יש להזין מספר תעודת זהות כולל ספרת ביקורת',
     validationRules: ['israeliID'],
   },
   {
     name: 'gender',
-    type: 'genderSelect',
+    type: FieldType.GENDER_SELECT,
     options: [
       {
         value: 'male',
@@ -165,13 +168,13 @@ export const stepTwoFields = [
   },
   {
     name: 'countryOfBirth',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'ארץ לידה',
     errorMessage: '* יש לבחור ארץ לידה מהרשימה',
   },
   {
     name: 'immigrationYear',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'שנת עלייה',
     errorMessage: '',
     validationRules: ['year'],
@@ -181,14 +184,14 @@ export const stepTwoFields = [
     fields: [
       {
         name: 'street',
-        type: 'text',
+        type: FieldType.TEXT,
         label: 'רחוב',
         errorMessage: '* נא להזין רחוב',
         validationRules: ['hebrew'],
       },
       {
         name: 'houseNumber',
-        type: 'number',
+        type: FieldType.NUMBER,
         label: 'בית/דירה',
         errorMessage: '* יש להזין מספר בית',
       },
@@ -196,41 +199,41 @@ export const stepTwoFields = [
   },
   {
     name: 'city',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'עיר',
     errorMessage: '* יש לבחור עיר מהרשימה',
     validationRules: ['hebrew'],
   },
   {
     name: 'zipCode',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'מיקוד',
     errorMessage: '* נא להזין מיקוד תקין',
     validationRules: ['zipCode'],
   },
   {
     name: 'mobilePhone',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'טלפון נייד',
     errorMessage: '* יש להזין מספר טלפון נייד תקין',
     validationRules: ['phoneNumber'],
   },
   {
     name: 'additionalPhone',
-    type: 'number',
+    type: FieldType.NUMBER,
     label: 'טלפון נוסף (אופציונאלי)',
     errorMessage: '* יש להזין מספר טלפון נייד תקין',
   },
   {
     name: 'email',
-    type: 'text',
+    type: FieldType.TEXT,
     label: 'כתובת דוא"ל',
     errorMessage: '* יש להזין כתובת דואר אלקטרוני',
     validationRules: ['email'],
   },
   {
     name: 'carOwner',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: true,
@@ -250,7 +253,7 @@ export const stepTwoFields = [
   },
   {
     name: 'hasDrivingLicense',
-    type: 'boolean',
+    type: FieldType.BOOLEAN,
     options: [
       {
         value: true,

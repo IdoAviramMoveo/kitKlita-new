@@ -6,7 +6,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserType } from '../data/enums.data';
+import { UserType } from '../enums/user-types.enum';
 
 @Injectable({
   providedIn: 'root',
