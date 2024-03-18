@@ -14,7 +14,9 @@ export class StepTwoComponent implements OnInit {
 
   fields = stepTwoFields;
 
-  ngOnInit() {}
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 
   selectOption(fieldName: string, value: any) {
     this.formGroup.get(fieldName).setValue(value);

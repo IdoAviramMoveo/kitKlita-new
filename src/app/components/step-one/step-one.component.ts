@@ -14,7 +14,9 @@ export class StepOneComponent implements OnInit {
   fields = stepOneFields;
   dropdowns: { [key: string]: boolean } = {};
 
-  ngOnInit() {}
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
 
   toggleDropdown(fieldName: string) {
     this.dropdowns[fieldName] = !this.dropdowns[fieldName];
