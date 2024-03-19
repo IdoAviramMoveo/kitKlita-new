@@ -53,7 +53,6 @@ export class RegistrationComponent implements OnInit {
       stepTwo: this.fb.group(buildFormControls(this.stepTwoFields)),
       stepThree: this.fb.group(buildFormControls(this.stepThreeFields)),
     });
-    console.log(this.registrationForm.value);
   }
 
   initializeFormBasedOnUserType(userType: UserType) {

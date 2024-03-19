@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { StepTwoComponent } from './components/step-two/step-two.component';
 import { HeaderComponent } from './components/header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { StepThreeComponent } from './components/step-three/step-three.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { StepThreeComponent } from './components/step-three/step-three.component
     StepTwoComponent,
     HeaderComponent,
     StepThreeComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { StepThreeComponent } from './components/step-three/step-three.component
     MatIconModule,
     MatSelectModule,
     MatRadioModule,
+    MatDialogModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

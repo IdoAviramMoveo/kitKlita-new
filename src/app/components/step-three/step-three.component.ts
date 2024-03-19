@@ -1,20 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
 import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import {
-  buildFormControls,
   isFormArrayField,
   isFormGroupFields,
 } from '../../utils/form-validators.util';
 import { stepThreeFields } from '../../data/step-forms.data';
 import { FieldType } from '../../enums/field-types.enum';
-import { FormArrayField } from '../../models/form-fields.model';
-
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 @Component({
   selector: 'app-step-three',
   templateUrl: './step-three.component.html',
@@ -30,7 +24,7 @@ export class StepThreeComponent implements OnInit {
   workplaceFields: any[] = [];
   recommenderFields: any[] = [];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {}
 
   ngOnInit() {
     console.log(this.formGroup.value);
@@ -120,6 +114,38 @@ export class StepThreeComponent implements OnInit {
   removeRecommender(workplaceIndex: number, recommenderIndex: number): void {
     const recommenders = this.getRecommenders(workplaceIndex);
     recommenders.removeAt(recommenderIndex);
+  }
+
+  removeRecommenderWithConfirmation(
+    workplaceIndex: number,
+    recommenderIndex: number
+  ): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '45%',
+      height: '360px',
+      maxWidth: '800px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.removeRecommender(workplaceIndex, recommenderIndex);
+      }
+    });
+  }
+
+  removeWorkplaceWithConfirmation(index: number): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '70%',
+      height: '335px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.removeWorkplace(index);
+      }
+    });
   }
 
   onNext() {

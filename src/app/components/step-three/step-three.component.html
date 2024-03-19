@@ -13,7 +13,7 @@
           <span
             *ngIf="workplaceIndex !== 0"
             type="button"
-            (click)="removeWorkplace(workplaceIndex)"
+            (click)="removeWorkplaceWithConfirmation(workplaceIndex)"
             class="remove-button"
           >
             +
@@ -68,7 +68,12 @@
             <div class="sub-title-remove-container">
               <span
                 type="button"
-                (click)="removeRecommender(workplaceIndex, recommenderIndex)"
+                (click)="
+                  removeRecommenderWithConfirmation(
+                    workplaceIndex,
+                    recommenderIndex
+                  )
+                "
                 class="remove-button"
               >
                 +
