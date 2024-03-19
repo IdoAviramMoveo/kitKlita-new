@@ -11,4 +11,11 @@
     (nextStep)="goToNextStep()"
     (prevStep)="goToPreviousStep()"
   ></app-step-two>
+  <app-step-three
+    *ngIf="currentStep === 3"
+    [formGroup]="registrationForm.get('stepThree')"
+    (nextStep)="goToNextStep()"
+    (prevStep)="goToPreviousStep()"
+  >
+  </app-step-three>
 </div>

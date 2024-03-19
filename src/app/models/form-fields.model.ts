@@ -36,6 +36,7 @@ export interface FormGroupFields {
 }
 
 export interface FormArrayField {
-  arrayName: string;
-  fields: FormField[];
+  name: string;
+  type: FieldType.FORM_ARRAY;
+  arrayFields: Array<FormField | FormGroupFields | FormArrayField>;
 }

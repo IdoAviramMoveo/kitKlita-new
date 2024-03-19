@@ -16,6 +16,7 @@ import { StepOneComponent } from './components/step-one/step-one.component';
 import { StepTwoComponent } from './components/step-two/step-two.component';
 import { HeaderComponent } from './components/header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { StepThreeComponent } from './components/step-three/step-three.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     StepOneComponent,
     StepTwoComponent,
     HeaderComponent,
+    StepThreeComponent,
   ],
   imports: [
     BrowserModule,

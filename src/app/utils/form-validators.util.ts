@@ -4,8 +4,13 @@ import {
   AbstractControl,
   FormGroup,
   FormControl,
+  FormArray,
 } from '@angular/forms';
-import { FormField, FormGroupFields } from '../models/form-fields.model';
+import {
+  FormArrayField,
+  FormField,
+  FormGroupFields,
+} from '../models/form-fields.model';
 
 export function hebrewCharactersValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -67,17 +72,51 @@ export function zipCodeValidator(): ValidatorFn {
   };
 }
 
-function isFormField(field: FormField | FormGroupFields): field is FormField {
+export function isFormField(
+  field: FormField | FormGroupFields | FormArrayField
+): field is FormField {
   return 'type' in field;
 }
 
-export function buildFormControls(fields: (FormField | FormGroupFields)[]): {
-  [key: string]: AbstractControl;
-} {
+export function isFormGroupFields(field: any): field is FormGroupFields {
+  return (
+    field && typeof field === 'object' && 'group' in field && 'fields' in field
+  );
+}
+
+export function isFormArrayField(
+  field: FormField | FormGroupFields | FormArrayField
+): field is FormArrayField {
+  return 'arrayFields' in field;
+}
+
+export function buildFormControls(
+  fields: (FormField | FormGroupFields | FormArrayField)[]
+): { [key: string]: AbstractControl } {
   const group: { [key: string]: AbstractControl } = {};
 
   fields.forEach((field) => {
-    if ('group' in field && field.fields) {
+    if (isFormArrayField(field)) {
+      const formArray = new FormArray(
+        field.arrayFields.map((subField) => {
+          if ('group' in subField && subField.fields) {
+            const subGroup: { [key: string]: AbstractControl } = {};
+            subField.fields.forEach((nestedField) => {
+              if (isFormField(nestedField)) {
+                subGroup[nestedField.name] = createControl(
+                  nestedField,
+                  subGroup
+                );
+              }
+            });
+            return new FormGroup(subGroup);
+          } else if (isFormField(subField)) {
+            return createControl(subField, {});
+          }
+        })
+      );
+      group[field.name] = formArray;
+    } else if ('group' in field && field.fields) {
       const subGroup: { [key: string]: AbstractControl } = {};
       field.fields.forEach((subField) => {
         if (isFormField(subField)) {

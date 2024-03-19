@@ -320,62 +320,73 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
   },
 ];
 
-export const stepThreeFields: (FormField | FormGroupFields | FormArrayField)[] =
-  [
-    {
-      arrayName: 'workExperiences',
-      fields: [
-        {
-          name: 'companyName',
-          type: FieldType.TEXT,
-          label: 'חברה',
-          errorMessage: '* יש למלא שם מקום העבודה',
-          validationRules: ['hebrew'],
-          required: true,
-        },
-        {
-          name: 'position',
-          type: FieldType.TEXT,
-          label: 'תפקיד',
-          errorMessage: '* יש לציין תפקיד',
-          validationRules: ['hebrew'],
-          required: true,
-        },
-        {
-          name: 'reasonEnd',
-          type: FieldType.TEXT,
-          label: 'סיבת סיום עבודה',
-          errorMessage: '* יש לציין סיבת סיום עבודה בעברית',
-          validationRules: ['hebrew'],
-          required: true,
-        },
-      ],
-    },
-    {
-      arrayName: 'recommenders',
-      fields: [
-        {
-          name: 'recommenderName',
-          type: FieldType.TEXT,
-          label: 'שם הממליץ',
-          errorMessage: '',
-          required: false,
-        },
-        {
-          name: 'recommenderPosition',
-          type: FieldType.TEXT,
-          label: 'תפקיד',
-          errorMessage: '',
-          required: false,
-        },
-        {
-          name: 'recommenderPhone',
-          type: FieldType.NUMBER,
-          label: 'טלפון',
-          errorMessage: '* יש להזין מספר טלפון נייד תקין',
-          validationRules: ['phoneNumber'],
-          required: true,
-        },
-      ],
-    },
-  ];
+export const stepThreeFields: FormArrayField[] = [
+  {
+    name: 'workplaces',
+    type: FieldType.FORM_ARRAY,
+    arrayFields: [
+      {
+        group: 'workplaceDetails',
+        fields: [
+          {
+            name: 'companyName',
+            type: FieldType.TEXT,
+            label: 'חברה',
+            errorMessage: '* יש למלא שם מקום העבודה',
+            validationRules: ['hebrew'],
+            required: true,
+          },
+          {
+            name: 'position',
+            type: FieldType.TEXT,
+            label: 'תפקיד',
+            errorMessage: '* יש לציין תפקיד',
+            validationRules: ['hebrew'],
+            required: true,
+          },
+          {
+            name: 'reasonEnd',
+            type: FieldType.TEXT,
+            label: 'סיבת סיום עבודה',
+            errorMessage: '* יש לציין סיבת סיום עבודה בעברית',
+            validationRules: ['hebrew'],
+            required: true,
+          },
+        ],
+      },
+      {
+        name: 'recommenders',
+        type: FieldType.FORM_ARRAY,
+        arrayFields: [
+          {
+            group: 'recommenderDetails',
+            fields: [
+              {
+                name: 'recommenderName',
+                type: FieldType.TEXT,
+                label: 'שם הממליץ',
+                errorMessage: '',
+                required: false,
+              },
+              {
+                name: 'recommenderPosition',
+                type: FieldType.TEXT,
+                label: 'תפקיד',
+                errorMessage: '',
+                required: false,
+              },
+              {
+                name: 'recommenderPhone',
+                type: FieldType.NUMBER,
+                label: 'טלפון',
+                errorMessage: '* יש להזין מספר טלפון נייד תקין',
+                validationRules: ['phoneNumber'],
+                required: true,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
