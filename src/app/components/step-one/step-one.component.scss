@@ -73,7 +73,6 @@
     .dropdown-container {
       display: flex;
       flex-direction: column;
-      gap: 3px;
       .select-input {
         border: 1px solid #8f8f8f;
         background-color: white;
@@ -87,8 +86,17 @@
         width: 352px;
         min-width: 221px;
         height: 51px;
-        cursor: pointer;
         font-size: 18px;
+        margin-top: 3px;
+
+        &:disabled {
+          cursor: not-allowed;
+          color: #c2c3c6;
+          background-color: #f0f0ef;
+        }
+        &:enabled {
+          cursor: pointer;
+        }
       }
 
       .select-options {

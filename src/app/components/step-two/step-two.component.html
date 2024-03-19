@@ -4,7 +4,10 @@
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
       <div
-        *ngIf="field.type === FieldType.TEXT || field.type === FieldType.NUMBER"
+        *ngIf="
+          (field.type === FieldType.TEXT || field.type === FieldType.NUMBER) &&
+          shouldDisplayField(field)
+        "
         class="text-input-container"
       >
         <input

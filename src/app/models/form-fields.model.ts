@@ -2,8 +2,12 @@ import { FieldType } from '../enums/field-types.enum';
 
 interface FormCondition {
   dependsOn: string;
-  value: any;
+  value?: any;
   notEquals?: boolean;
+}
+
+interface FormEnablementCondition extends FormCondition {
+  enableIfTrue: boolean;
 }
 
 export interface FormOption {
@@ -23,9 +27,15 @@ export interface FormField {
   validationRules?: string[];
   required?: boolean;
   displayCondition?: FormCondition;
+  enableCondition?: FormEnablementCondition;
 }
 
 export interface FormGroupFields {
   group?: string;
+  fields: FormField[];
+}
+
+export interface FormArrayField {
+  arrayName: string;
   fields: FormField[];
 }

@@ -67,62 +67,6 @@ export function zipCodeValidator(): ValidatorFn {
   };
 }
 
-// export function buildFormControls(fields) {
-//   const group = {};
-
-//   fields.forEach((field) => {
-//     if (field.group && field.fields) {
-//       const subGroup = {};
-//       field.fields.forEach((subField) => {
-//         subGroup[subField.name] = createControl(subField);
-//       });
-//       group[field.group] = new FormGroup(subGroup);
-//     } else {
-//       group[field.name] = createControl(field);
-//     }
-//   });
-
-//   return group;
-// }
-
-// function createControl(field) {
-//   let validators = [Validators.required];
-//   if (field.validationRules) {
-//     validators = validators.concat(getValidators(field.validationRules));
-//   }
-//   return new FormControl('', Validators.compose(validators));
-// }
-
-// function getValidators(rules) {
-//   const validators = [];
-//   rules.forEach((rule) => {
-//     switch (rule) {
-//       case 'email':
-//         validators.push(Validators.email);
-//         break;
-//       case 'hebrew':
-//         validators.push(hebrewCharactersValidator());
-//         break;
-//       case 'english':
-//         validators.push(englishCharactersValidator());
-//         break;
-//       case 'year':
-//         validators.push(yearValidator());
-//         break;
-//       case 'phoneNumber':
-//         validators.push(phoneNumberValidator());
-//         break;
-//       case 'israeliID':
-//         validators.push(israeliIDValidator());
-//         break;
-//       case 'zipCode':
-//         validators.push(zipCodeValidator());
-//         break;
-//     }
-//   });
-//   return validators;
-// }
-
 function isFormField(field: FormField | FormGroupFields): field is FormField {
   return 'type' in field;
 }
@@ -137,33 +81,48 @@ export function buildFormControls(fields: (FormField | FormGroupFields)[]): {
       const subGroup: { [key: string]: AbstractControl } = {};
       field.fields.forEach((subField) => {
         if (isFormField(subField)) {
-          subGroup[subField.name] = createControl(subField);
+          subGroup[subField.name] = createControl(subField, group);
         }
       });
       group[field.group!] = new FormGroup(subGroup);
     } else if (isFormField(field)) {
-      group[field.name] = createControl(field);
-    }
-  });
-
-  // Apply conditional logic after all fields have been initialized
-  fields.forEach((field) => {
-    if (isFormField(field) && field.displayCondition) {
-      handleDisplayCondition(field, group);
+      group[field.name] = createControl(field, group);
     }
   });
 
   return group;
 }
 
-function createControl(field: FormField): FormControl {
+function createControl(
+  field: FormField,
+  group: { [key: string]: AbstractControl }
+): FormControl {
   let validators: ValidatorFn[] = field.required ? [Validators.required] : [];
 
   if (field.validationRules) {
     validators = validators.concat(getValidators(field.validationRules));
   }
 
-  return new FormControl('', Validators.compose(validators));
+  const formControl = new FormControl(
+    { value: '', disabled: field.enableCondition ? true : false },
+    Validators.compose(validators)
+  );
+
+  if (field.enableCondition) {
+    const condition = field.enableCondition;
+    const dependsOnControl = group[condition.dependsOn];
+    if (dependsOnControl) {
+      dependsOnControl.valueChanges.subscribe((newValue) => {
+        if (condition.enableIfTrue && newValue) {
+          formControl.enable();
+        } else {
+          formControl.disable();
+        }
+      });
+    }
+  }
+
+  return formControl;
 }
 
 function getValidators(rules: string[]): ValidatorFn[] {
@@ -188,20 +147,4 @@ function getValidators(rules: string[]): ValidatorFn[] {
     }
   });
   return validators;
-}
-
-function handleDisplayCondition(
-  field: FormField,
-  group: { [key: string]: AbstractControl }
-) {
-  // This example assumes `displayCondition` has been properly typed and exists in FormField
-  const condition = field.displayCondition!;
-  const dependsOnControl = group[condition.dependsOn];
-
-  if (dependsOnControl) {
-    dependsOnControl.valueChanges.subscribe(() => {
-      // Implement your conditional logic here, adjusting visibility/validity as needed
-      // This is a placeholder for where you would adjust the form control based on condition
-    });
-  }
 }

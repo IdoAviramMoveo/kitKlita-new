@@ -20,7 +20,11 @@
 
       <div *ngIf="field.type === FieldType.DROPDOWN" class="dropdown-container">
         <label>{{ field.label }}</label>
-        <button class="select-input" (click)="toggleDropdown(field.name)">
+        <button
+          class="select-input"
+          [disabled]="formGroup.get(field.name).disabled"
+          (click)="toggleDropdown(field.name)"
+        >
           {{ getSelectedOptionDisplay(field) || "בחר" }}
           <img class="arrow" src="../../../assets/images/select-arrow.png" />
         </button>

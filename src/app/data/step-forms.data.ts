@@ -1,4 +1,8 @@
-import { FormField, FormGroupFields } from '../models/form-fields.model';
+import {
+  FormArrayField,
+  FormField,
+  FormGroupFields,
+} from '../models/form-fields.model';
 import { FieldType } from '../enums/field-types.enum';
 
 // TODO: Move hardcoded texts to json file.
@@ -30,6 +34,10 @@ export const stepOneFields: FormField[] = [
     label: 'בחר תפקיד מיועד',
     errorMessage: '',
     required: true,
+    enableCondition: {
+      dependsOn: 'desiredSector',
+      enableIfTrue: true,
+    },
   },
   {
     name: 'hearAboutUs',
@@ -311,3 +319,63 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     required: true,
   },
 ];
+
+export const stepThreeFields: (FormField | FormGroupFields | FormArrayField)[] =
+  [
+    {
+      arrayName: 'workExperiences',
+      fields: [
+        {
+          name: 'companyName',
+          type: FieldType.TEXT,
+          label: 'חברה',
+          errorMessage: '* יש למלא שם מקום העבודה',
+          validationRules: ['hebrew'],
+          required: true,
+        },
+        {
+          name: 'position',
+          type: FieldType.TEXT,
+          label: 'תפקיד',
+          errorMessage: '* יש לציין תפקיד',
+          validationRules: ['hebrew'],
+          required: true,
+        },
+        {
+          name: 'reasonEnd',
+          type: FieldType.TEXT,
+          label: 'סיבת סיום עבודה',
+          errorMessage: '* יש לציין סיבת סיום עבודה בעברית',
+          validationRules: ['hebrew'],
+          required: true,
+        },
+      ],
+    },
+    {
+      arrayName: 'recommenders',
+      fields: [
+        {
+          name: 'recommenderName',
+          type: FieldType.TEXT,
+          label: 'שם הממליץ',
+          errorMessage: '',
+          required: false,
+        },
+        {
+          name: 'recommenderPosition',
+          type: FieldType.TEXT,
+          label: 'תפקיד',
+          errorMessage: '',
+          required: false,
+        },
+        {
+          name: 'recommenderPhone',
+          type: FieldType.NUMBER,
+          label: 'טלפון',
+          errorMessage: '* יש להזין מספר טלפון נייד תקין',
+          validationRules: ['phoneNumber'],
+          required: true,
+        },
+      ],
+    },
+  ];
