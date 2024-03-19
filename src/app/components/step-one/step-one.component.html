@@ -26,11 +26,11 @@
           (click)="toggleDropdown(field.name)"
         >
           {{ getSelectedOptionDisplay(field) || "בחר" }}
-          <img class="arrow" src="../../../assets/images/select-arrow.png" />
+          <img class="arrow" src="./assets/images/select-arrow.png" />
         </button>
         <div *ngIf="dropdowns[field.name]" class="select-options">
           <button
-            *ngFor="let option of field.options; let i = index; let last = last"
+            *ngFor="let option of field.options"
             class="select-option"
             (click)="selectOption(field.name, option.value)"
           >

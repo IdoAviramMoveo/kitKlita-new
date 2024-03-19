@@ -136,8 +136,9 @@ export class StepThreeComponent implements OnInit {
 
   removeWorkplaceWithConfirmation(index: number): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '70%',
-      height: '335px',
+      width: '45%',
+      height: '360px',
+      maxWidth: '800px',
       data: {},
     });
 
