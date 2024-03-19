@@ -33,6 +33,7 @@ export class StepThreeComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    console.log(this.formGroup.value);
     this.initializeForm();
     this.extractFormFields();
   }
@@ -41,8 +42,17 @@ export class StepThreeComponent implements OnInit {
     this.formGroup = this.fb.group({
       workplaces: this.fb.array([this.createWorkplace()]),
     });
+  }
 
-    console.log(this.formGroup.value);
+  createWorkplace(): FormGroup {
+    return this.fb.group({
+      workplaceDetails: this.fb.group({
+        companyName: ['', Validators.required],
+        position: ['', Validators.required],
+        reasonEnd: ['', Validators.required],
+      }),
+      recommenders: this.fb.array([]),
+    });
   }
 
   extractFormFields() {
@@ -68,17 +78,6 @@ export class StepThreeComponent implements OnInit {
         }
       }
     }
-  }
-
-  createWorkplace(): FormGroup {
-    return this.fb.group({
-      workplaceDetails: this.fb.group({
-        companyName: ['', Validators.required],
-        position: ['', Validators.required],
-        reasonEnd: ['', Validators.required],
-      }),
-      recommenders: this.fb.array([]),
-    });
   }
 
   get workplaces(): FormArray {
@@ -121,27 +120,6 @@ export class StepThreeComponent implements OnInit {
   removeRecommender(workplaceIndex: number, recommenderIndex: number): void {
     const recommenders = this.getRecommenders(workplaceIndex);
     recommenders.removeAt(recommenderIndex);
-  }
-
-  getControlValidation(
-    workplaceIndex: number,
-    group: string,
-    fieldName: string,
-    recommenderIndex?: number
-  ) {
-    let controlPath = ['workplaces', workplaceIndex];
-
-    if (group === 'workplaceDetails') {
-      controlPath.push(group, 'fields', fieldName);
-    } else if (group === 'recommenders' && recommenderIndex !== undefined) {
-      controlPath.push(group, recommenderIndex, 'fields', fieldName);
-    } else {
-      console.warn('Unexpected form structure for validation path.');
-      return null;
-    }
-
-    const control = this.formGroup.get(controlPath);
-    return control || null;
   }
 
   onNext() {

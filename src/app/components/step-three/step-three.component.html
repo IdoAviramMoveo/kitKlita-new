@@ -9,7 +9,17 @@
         "
         [formGroupName]="workplaceIndex"
       >
-        <h2 class="sub-title">מקום עבודה {{ workplaceIndex + 1 }}</h2>
+        <div class="sub-title-remove-container">
+          <span
+            *ngIf="workplaceIndex !== 0"
+            type="button"
+            (click)="removeWorkplace(workplaceIndex)"
+            class="remove-button"
+          >
+            +
+          </span>
+          <h2 class="sub-title">מקום עבודה {{ workplaceIndex + 1 }}</h2>
+        </div>
         <div formGroupName="workplaceDetails">
           <div *ngFor="let field of workplaceFields">
             <div
@@ -26,21 +36,18 @@
               />
               <div
                 *ngIf="
-                  getControlValidation(
+                  formGroup.get([
+                    'workplaces',
                     workplaceIndex,
                     'workplaceDetails',
                     field.name
-                  ) &&
-                  getControlValidation(
+                  ]).touched &&
+                  formGroup.get([
+                    'workplaces',
                     workplaceIndex,
                     'workplaceDetails',
                     field.name
-                  ).invalid &&
-                  getControlValidation(
-                    workplaceIndex,
-                    'workplaceDetails',
-                    field.name
-                  ).touched
+                  ]).invalid
                 "
                 class="validation-message"
               >
@@ -58,7 +65,16 @@
             "
             [formGroupName]="recommenderIndex"
           >
-            <h2 class="sub-title">ממליץ {{ recommenderIndex + 1 }}</h2>
+            <div class="sub-title-remove-container">
+              <span
+                type="button"
+                (click)="removeRecommender(workplaceIndex, recommenderIndex)"
+                class="remove-button"
+              >
+                +
+              </span>
+              <h2 class="sub-title">ממליץ {{ recommenderIndex + 1 }}</h2>
+            </div>
             <div *ngFor="let field of recommenderFields">
               <div
                 *ngIf="field.type === 'text' || field.type === 'number'"
@@ -70,28 +86,10 @@
                   [formControlName]="field.name"
                   [placeholder]="field.label"
                 />
-                <div
-                  *ngIf="
-                    getControlValidation(
-                      workplaceIndex,
-                      'recommenders',
-                      field.name,
-                      recommenderIndex
-                    )?.invalid &&
-                    getControlValidation(
-                      workplaceIndex,
-                      'recommenders',
-                      field.name,
-                      recommenderIndex
-                    )?.touched
-                  "
-                  class="validation-message"
-                >
-                  {{ field.errorMessage }}
-                </div>
               </div>
             </div>
           </div>
+
           <button
             type="button"
             (click)="addRecommender(workplaceIndex)"
