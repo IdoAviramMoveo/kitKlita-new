@@ -30,7 +30,6 @@ export class RegistrationComponent implements OnInit {
       const type = params['userType'];
       if (type && Object.values(UserType).includes(type as UserType)) {
         this.userType = type;
-        console.log(this.userType);
         this.initializeForm();
       } else {
         this.router.navigate(['/registration/general']);

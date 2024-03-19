@@ -41,7 +41,6 @@ export class StepTwoComponent implements OnInit {
     const condition = field.displayCondition;
     const finishedTyping = this.finishedTyping.get(condition.dependsOn);
 
-    console.log(condition);
     if (!finishedTyping) {
       return false;
     }
