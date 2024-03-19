@@ -22,7 +22,7 @@ import {
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
-  currentStep: number = 3;
+  currentStep: number = 1;
 
   stepOneFields: FormField[] = stepOneFields;
   stepTwoFields: (FormField | FormGroupFields)[] = stepTwoFields;
