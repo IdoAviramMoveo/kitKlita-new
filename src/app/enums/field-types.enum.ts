@@ -5,4 +5,5 @@ export enum FieldType {
   RADIO = 'radio',
   GENDER_SELECT = 'genderSelect',
   BOOLEAN = 'boolean',
+  FORM_ARRAY = 'formArray',
 }

@@ -1,4 +1,3 @@
-// Create new enum folder.
 export enum UserType {
   GENERAL = 'general',
   INTERN = 'intern',

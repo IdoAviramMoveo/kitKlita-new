@@ -1,0 +1,127 @@
+<div class="step-main-container" [formGroup]="formGroup">
+  <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
+  <div class="form-container">
+    <div formArrayName="workplaces">
+      <div
+        *ngFor="
+          let workplace of workplaces.controls;
+          let workplaceIndex = index
+        "
+        [formGroupName]="workplaceIndex"
+      >
+        <div class="sub-title-remove-container">
+          <span
+            *ngIf="workplaceIndex !== 0"
+            type="button"
+            (click)="removeWorkplaceWithConfirmation(workplaceIndex)"
+            class="remove-button"
+          >
+            +
+          </span>
+          <h2 class="sub-title">מקום עבודה {{ workplaceIndex + 1 }}</h2>
+        </div>
+        <div formGroupName="workplaceDetails">
+          <div *ngFor="let field of workplaceFields">
+            <div
+              *ngIf="
+                field.type === FieldType.TEXT || field.type === FieldType.NUMBER
+              "
+              class="text-input-container"
+            >
+              <input
+                class="text-input"
+                [type]="field.type"
+                [formControlName]="field.name"
+                [placeholder]="field.label"
+              />
+              <div
+                *ngIf="
+                  formGroup.get([
+                    'workplaces',
+                    workplaceIndex,
+                    'workplaceDetails',
+                    field.name
+                  ]).touched &&
+                  formGroup.get([
+                    'workplaces',
+                    workplaceIndex,
+                    'workplaceDetails',
+                    field.name
+                  ]).invalid
+                "
+                class="validation-message"
+              >
+                {{ field.errorMessage }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div formArrayName="recommenders">
+          <div
+            *ngFor="
+              let recommender of getRecommenders(workplaceIndex).controls;
+              let recommenderIndex = index
+            "
+            [formGroupName]="recommenderIndex"
+          >
+            <div class="sub-title-remove-container">
+              <span
+                type="button"
+                (click)="
+                  removeRecommenderWithConfirmation(
+                    workplaceIndex,
+                    recommenderIndex
+                  )
+                "
+                class="remove-button"
+              >
+                +
+              </span>
+              <h2 class="sub-title">ממליץ {{ recommenderIndex + 1 }}</h2>
+            </div>
+            <div *ngFor="let field of recommenderFields">
+              <div
+                *ngIf="field.type === 'text' || field.type === 'number'"
+                class="text-input-container"
+              >
+                <input
+                  class="text-input"
+                  [type]="field.type"
+                  [formControlName]="field.name"
+                  [placeholder]="field.label"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            (click)="addRecommender(workplaceIndex)"
+            class="add-recommender-button"
+          >
+            הוסף ממליץ
+          </button>
+        </div>
+      </div>
+      <button
+        type="button"
+        (click)="addWorkplace()"
+        class="add-workplace-button"
+      >
+        הוסף מקום עבודה
+      </button>
+    </div>
+  </div>
+  <div class="actions-container">
+    <button type="button" (click)="onPrev()" class="prev-button">חזור</button>
+    <button
+      type="button"
+      (click)="onNext()"
+      [disabled]="!formGroup.valid"
+      class="next-button"
+    >
+      המשך
+    </button>
+  </div>
+</div>

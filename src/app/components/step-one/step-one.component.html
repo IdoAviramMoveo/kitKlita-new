@@ -3,9 +3,28 @@
   <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
   <div class="form-container">
     <ng-container *ngFor="let field of fields">
+      <div
+        *ngIf="
+          (field.type === FieldType.TEXT || field.type === FieldType.NUMBER) &&
+          shouldDisplayField(field)
+        "
+        class="text-input-container"
+      >
+        <input
+          class="text-input"
+          [type]="field.type"
+          [formControlName]="field.name"
+          [placeholder]="field.label"
+        />
+      </div>
+
       <div *ngIf="field.type === FieldType.DROPDOWN" class="dropdown-container">
         <label>{{ field.label }}</label>
-        <button class="select-input" (click)="toggleDropdown(field.name)">
+        <button
+          class="select-input"
+          [disabled]="formGroup.get(field.name).disabled"
+          (click)="toggleDropdown(field.name)"
+        >
           {{ getSelectedOptionDisplay(field) || "בחר" }}
           <img class="arrow" src="./assets/images/select-arrow.png" />
         </button>
@@ -64,6 +83,13 @@
   </div>
 
   <div class="actions-container">
-    <button type="button" (click)="onNext()" class="next-button">המשך</button>
+    <button
+      type="button"
+      (click)="onNext()"
+      [disabled]="!formGroup.valid"
+      class="next-button"
+    >
+      המשך
+    </button>
   </div>
 </div>

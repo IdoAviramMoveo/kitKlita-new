@@ -1,9 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { stepOneFields, stepTwoFields } from '../../data/step-forms.data';
+import {
+  stepOneFields,
+  stepTwoFields,
+  stepThreeFields,
+} from '../../data/step-forms.data';
 import { UserType } from '../../enums/user-types.enum';
-import { FieldType } from '../../enums/field-types.enum';
+import { buildFormControls } from '../../utils/form-validators.util';
+import {
+  FormArrayField,
+  FormField,
+  FormGroupFields,
+} from '../../models/form-fields.model';
 
 @Component({
   selector: 'app-registration',
@@ -15,9 +24,10 @@ export class RegistrationComponent implements OnInit {
   userType: string;
   currentStep: number = 1;
 
-  FieldType = FieldType;
-  stepOneFields = stepOneFields;
-  stepTwoFields = stepTwoFields;
+  stepOneFields: FormField[] = stepOneFields;
+  stepTwoFields: (FormField | FormGroupFields)[] = stepTwoFields;
+  stepThreeFields: (FormField | FormGroupFields | FormArrayField)[] =
+    stepThreeFields;
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +49,10 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registrationForm = this.fb.group({
-      stepOne: this.fb.group(this.buildFormControls(this.stepOneFields)),
-      stepTwo: this.fb.group(this.buildFormControls(this.stepTwoFields)),
-    }); // TODO: Add validators and type for each step
+      stepOne: this.fb.group(buildFormControls(this.stepOneFields)),
+      stepTwo: this.fb.group(buildFormControls(this.stepTwoFields)),
+      stepThree: this.fb.group(buildFormControls(this.stepThreeFields)),
+    });
   }
 
   initializeFormBasedOnUserType(userType: UserType) {
@@ -61,7 +72,7 @@ export class RegistrationComponent implements OnInit {
   buildFormControls(fields) {
     const group = {};
     fields.forEach((field) => {
-      group[field.name] = [''];
+      group[field.name] = ['', Validators.required];
     });
     return group;
   }
