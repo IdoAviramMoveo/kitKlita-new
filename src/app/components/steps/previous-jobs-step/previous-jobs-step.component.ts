@@ -27,7 +27,6 @@ export class PreviousJobsStepComponent implements OnInit {
   constructor(private fb: FormBuilder, private dialog: MatDialog) {}
 
   ngOnInit() {
-    console.log(this.formGroup.value);
     this.initializeForm();
     this.extractFormFields();
   }

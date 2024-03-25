@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -16,18 +16,21 @@ import {
 import { CandidateQuestionnaireStepComponent } from '../steps/candidate-questionnaire-step/candidate-questionnaire-step.component';
 import { PersonalInformationStepComponent } from '../steps/personal-Information-step/personal-information-step.component';
 import { PreviousJobsStepComponent } from '../steps/previous-jobs-step/previous-jobs-step.component';
+import { Step } from '../../enums/step-types.enum';
+import { StepProp } from '../../models/steps.model';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss',
 })
+
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
   currentStep: number = 1;
   FIRST_STEP: number = 1;
-  steps;
+  steps: StepProp[];
 
   candidateQuestionnaireFields: FormField[] = candidateQuestionnaireFields;
   personalInformationFields: (FormField | FormGroupFields)[] = personalInformationFields;
@@ -47,9 +50,9 @@ export class RegistrationComponent implements OnInit {
         this.userType = type;
         this.initializeForm();
         this.steps = [
-          { component: CandidateQuestionnaireStepComponent, formGroup: {'formGroup' : this.registrationForm.get('stepOne')} },
-          { component: PersonalInformationStepComponent, formGroup: {'formGroup' : this.registrationForm.get('stepTwo')} },
-          { component: PreviousJobsStepComponent, formGroup: {'formGroup' : this.registrationForm.get('stepThree')} }
+          { component: CandidateQuestionnaireStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_ONE) as FormGroup} },
+          { component: PersonalInformationStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_TWO) as FormGroup} },
+          { component: PreviousJobsStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_THREE) as FormGroup} }
         ];
       } else {
         this.router.navigate(['/registration/general']);
@@ -59,9 +62,9 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registrationForm = this.fb.group({
-      stepOne: this.fb.group(buildFormControls(this.candidateQuestionnaireFields)),
-      stepTwo: this.fb.group(buildFormControls(this.personalInformationFields)),
-      stepThree: this.fb.group(buildFormControls(this.previousJobsFields)),
+      [Step.STEP_ONE]: this.fb.group(buildFormControls(this.candidateQuestionnaireFields)),
+      [Step.STEP_TWO]: this.fb.group(buildFormControls(this.personalInformationFields)),
+      [Step.STEP_THREE]: this.fb.group(buildFormControls(this.previousJobsFields)),
     });
   }
 
