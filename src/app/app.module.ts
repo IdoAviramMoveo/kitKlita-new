@@ -13,21 +13,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { StepOneComponent } from './components/step-one/step-one.component';
-import { StepTwoComponent } from './components/step-two/step-two.component';
+import { CandidateQuestionnaireStepComponent } from './components/steps/candidate-questionnaire-step/candidate-questionnaire-step.component';
+import { PersonalInformationStepComponent } from './components/steps/personal-Information-step/personal-information-step.component';
 import { HeaderComponent } from './components/header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { StepThreeComponent } from './components/step-three/step-three.component';
+import { PreviousJobsStepComponent } from './components/steps/previous-jobs-step/previous-jobs-step.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    StepOneComponent,
-    StepTwoComponent,
+    CandidateQuestionnaireStepComponent,
+    PersonalInformationStepComponent,
     HeaderComponent,
-    StepThreeComponent,
+    PreviousJobsStepComponent,
     ConfirmDialogComponent,
   ],
   imports: [

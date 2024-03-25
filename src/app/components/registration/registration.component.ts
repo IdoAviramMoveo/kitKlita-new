@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  stepOneFields,
-  stepTwoFields,
-  stepThreeFields,
+  candidateQuestionnaireFields,
+  personalInformationFields,
+  previousJobsFields,
 } from '../../data/step-forms.data';
 import { UserType } from '../../enums/user-types.enum';
 import { buildFormControls } from '../../utils/form-validators.util';
@@ -24,10 +24,10 @@ export class RegistrationComponent implements OnInit {
   userType: string;
   currentStep: number = 1;
 
-  stepOneFields: FormField[] = stepOneFields;
-  stepTwoFields: (FormField | FormGroupFields)[] = stepTwoFields;
-  stepThreeFields: (FormField | FormGroupFields | FormArrayField)[] =
-    stepThreeFields;
+  candidateQuestionnaireFields: FormField[] = candidateQuestionnaireFields;
+  personalInformationFields: (FormField | FormGroupFields)[] = personalInformationFields;
+  previousJobsFields: (FormField | FormGroupFields | FormArrayField)[] =
+    previousJobsFields;
 
   constructor(
     private fb: FormBuilder,
@@ -49,9 +49,9 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registrationForm = this.fb.group({
-      stepOne: this.fb.group(buildFormControls(this.stepOneFields)),
-      stepTwo: this.fb.group(buildFormControls(this.stepTwoFields)),
-      stepThree: this.fb.group(buildFormControls(this.stepThreeFields)),
+      stepOne: this.fb.group(buildFormControls(this.candidateQuestionnaireFields)),
+      stepTwo: this.fb.group(buildFormControls(this.personalInformationFields)),
+      stepThree: this.fb.group(buildFormControls(this.previousJobsFields)),
     });
   }
 

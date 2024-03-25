@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { stepTwoFields } from '../../data/step-forms.data';
-import { FieldType } from '../../enums/field-types.enum';
-import { FormField, FormGroupFields } from '../../models/form-fields.model';
+import { personalInformationFields } from '../../../data/step-forms.data';
+import { FieldType } from '../../../enums/field-types.enum';
+import { FormField, FormGroupFields } from '../../../models/form-fields.model';
 
 @Component({
-  selector: 'app-step-two',
-  templateUrl: './step-two.component.html',
-  styleUrl: './step-two.component.scss',
+  selector: 'app-personal-information-step',
+  templateUrl: './personal-information-step.component.html',
+  styleUrl: './personal-information-step.component.scss',
 })
-export class StepTwoComponent implements OnInit {
+export class PersonalInformationStepComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Output() nextStep = new EventEmitter<void>();
   @Output() prevStep = new EventEmitter<void>();
 
   FieldType = FieldType;
-  fields = stepTwoFields;
+  fields = personalInformationFields;
   finishedTyping = new Map<string, boolean>();
 
   ngOnInit() {

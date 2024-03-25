@@ -1,20 +1,20 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { stepOneFields } from '../../data/step-forms.data';
-import { FieldType } from '../../enums/field-types.enum';
-import { FormField, FormGroupFields } from '../../models/form-fields.model';
+import { candidateQuestionnaireFields } from '../../../data/step-forms.data';
+import { FieldType } from '../../../enums/field-types.enum';
+import { FormField, FormGroupFields } from '../../../models/form-fields.model';
 
 @Component({
-  selector: 'app-step-one',
-  templateUrl: './step-one.component.html',
-  styleUrl: './step-one.component.scss',
+  selector: 'app-candidate-questionnaire-step',
+  templateUrl: './candidate-questionnaire-step.component.html',
+  styleUrl: './candidate-questionnaire-step.component.scss',
 })
-export class StepOneComponent implements OnInit {
+export class CandidateQuestionnaireStepComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Output() nextStep = new EventEmitter<void>();
 
   FieldType = FieldType;
-  fields = stepOneFields;
+  fields = candidateQuestionnaireFields;
   dropdowns: { [key: string]: boolean } = {};
 
   ngOnInit() {

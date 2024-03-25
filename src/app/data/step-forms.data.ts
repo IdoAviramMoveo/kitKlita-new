@@ -5,8 +5,7 @@ import {
 } from '../models/form-fields.model';
 import { FieldType } from '../enums/field-types.enum';
 
-// TODO: Move hardcoded texts to json file.
-export const stepOneFields: FormField[] = [
+export const candidateQuestionnaireFields: FormField[] = [
   {
     name: 'desiredSector',
     type: FieldType.DROPDOWN,
@@ -134,7 +133,7 @@ export const stepOneFields: FormField[] = [
   },
 ];
 
-export const stepTwoFields: (FormField | FormGroupFields)[] = [
+export const personalInformationFields: (FormField | FormGroupFields)[] = [
   {
     name: 'firstName',
     type: FieldType.TEXT,
@@ -209,8 +208,8 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
     type: FieldType.NUMBER,
     label: 'שנת עלייה',
     errorMessage: '',
-    validationRules: ['year'],
-    required: true,
+    // validationRules: ['year'],
+    required: false,
     displayCondition: {
       dependsOn: 'countryOfBirth',
       value: 'ישראל',
@@ -320,7 +319,7 @@ export const stepTwoFields: (FormField | FormGroupFields)[] = [
   },
 ];
 
-export const stepThreeFields: FormArrayField[] = [
+export const previousJobsFields: FormArrayField[] = [
   {
     name: 'workplaces',
     type: FieldType.FORM_ARRAY,

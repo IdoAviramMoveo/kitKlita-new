@@ -1,21 +1,21 @@
 <app-header></app-header>
 <div class="registration-container" dir="rtl">
-  <app-step-one
+  <app-candidate-questionnaire-step
     *ngIf="currentStep === 1"
     [formGroup]="registrationForm.get('stepOne')"
     (nextStep)="goToNextStep()"
-  ></app-step-one>
-  <app-step-two
+  ></app-candidate-questionnaire-step>
+  <app-personal-information-step
     *ngIf="currentStep === 2"
     [formGroup]="registrationForm.get('stepTwo')"
     (nextStep)="goToNextStep()"
     (prevStep)="goToPreviousStep()"
-  ></app-step-two>
-  <app-step-three
+  ></app-personal-information-step>
+  <app-previous-jobs-step
     *ngIf="currentStep === 3"
     [formGroup]="registrationForm.get('stepThree')"
     (nextStep)="goToNextStep()"
     (prevStep)="goToPreviousStep()"
   >
-  </app-step-three>
+  </app-previous-jobs-step>
 </div>

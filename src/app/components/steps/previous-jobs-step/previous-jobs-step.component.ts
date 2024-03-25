@@ -5,22 +5,22 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   isFormArrayField,
   isFormGroupFields,
-} from '../../utils/form-validators.util';
-import { stepThreeFields } from '../../data/step-forms.data';
-import { FieldType } from '../../enums/field-types.enum';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+} from '../../../utils/form-validators.util';
+import { previousJobsFields } from '../../../data/step-forms.data';
+import { FieldType } from '../../../enums/field-types.enum';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 @Component({
-  selector: 'app-step-three',
-  templateUrl: './step-three.component.html',
-  styleUrl: './step-three.component.scss',
+  selector: 'app-previous-jobs-step',
+  templateUrl: './previous-jobs-step.component.html',
+  styleUrl: './previous-jobs-step.component.scss',
 })
-export class StepThreeComponent implements OnInit {
+export class PreviousJobsStepComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Output() nextStep = new EventEmitter<void>();
   @Output() prevStep = new EventEmitter<void>();
 
   FieldType = FieldType;
-  fields = stepThreeFields;
+  fields = previousJobsFields;
   workplaceFields: any[] = [];
   recommenderFields: any[] = [];
 
@@ -50,7 +50,7 @@ export class StepThreeComponent implements OnInit {
   }
 
   extractFormFields() {
-    const workplacesConfig = stepThreeFields.find(
+    const workplacesConfig = previousJobsFields.find(
       (field) => field.name === 'workplaces'
     );
 

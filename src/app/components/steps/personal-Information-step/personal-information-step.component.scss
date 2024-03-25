@@ -1,4 +1,4 @@
-@import "../../styles/mixins";
+@import "../../../styles/mixins";
 
 .step-main-container {
   width: 100%;
@@ -34,26 +34,22 @@
 
   .form-container {
     display: flex;
-    flex-direction: column;
-    gap: 45px;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 57%;
     margin-right: 6%;
-    @include medium {
-      width: 70%;
-    }
-    @include small {
-      width: 80%;
-    }
     @include xsmall {
-      width: 100%;
       justify-content: center;
+      flex-direction: column;
+      flex-wrap: nowrap;
     }
 
     .text-input-container {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      margin-top: -20px;
+      height: 81px;
+      margin: 20px 0 0;
       margin-left: 45px;
 
       .text-input {
@@ -70,73 +66,96 @@
       }
     }
 
-    .dropdown-container {
+    .group-container {
       display: flex;
-      flex-direction: column;
-      .select-input {
-        border: 1px solid #8f8f8f;
-        background-color: white;
-        font-family: Opensanshebrew, sans-serif;
-        color: $color-dark;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        width: 352px;
-        min-width: 221px;
-        height: 51px;
-        font-size: 18px;
-        margin-top: 3px;
-
-        &:disabled {
-          cursor: not-allowed;
-          color: #c2c3c6;
-          background-color: #f0f0ef;
-        }
-        &:enabled {
-          cursor: pointer;
-        }
-      }
-
-      .select-options {
+      flex-direction: row;
+      width: 380px;
+      margin: 20px 0 0 0;
+      gap: 26px;
+      .address-input-container {
         display: flex;
         flex-direction: column;
-        border: 1px solid #dcdcdc;
-        width: 352px;
-        box-sizing: border-box;
-        max-height: 170px;
-        overflow-y: scroll;
-        z-index: 3;
+        gap: 8px;
+        height: 81px;
 
-        .select-option {
-          font-family: Opensanshebrew, sans-serif;
-          font-size: 19px;
-          width: 100%;
+        .first-input {
           text-align: right;
-          min-height: 45px;
-          padding: 5px 6px 2px;
-          border: none;
-          background-color: $color-white;
-          border-bottom: 1px solid $color-border;
-          cursor: pointer;
-
-          &:hover {
-            background-color: $color-light;
+          box-sizing: border-box;
+          width: 228px;
+          height: 50px;
+          padding: 8px 12px;
+          font-family: Opensanshebrew, sans-serif;
+          font-size: 17px;
+          ::placeholder {
+            text-align: right;
           }
         }
+        .last-input {
+          text-align: right;
+          box-sizing: border-box;
+          width: 84px;
+          height: 50px;
+          padding: 8px 12px;
+          font-family: Opensanshebrew, sans-serif;
+          font-size: 16px;
+          ::placeholder {
+            text-align: right;
+          }
+        }
+      }
+    }
+    .validation-message {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      line-height: 20px;
+      font-size: 14px;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      color: red;
+      font-weight: 300;
+    }
+
+    .gender-options-container {
+      display: flex;
+      flex-direction: row;
+
+      .gender-image {
+        cursor: pointer;
+      }
+
+      .other-option {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        cursor: pointer;
+        min-width: 141px;
+        width: 141px;
+        height: 97px;
+        border: 0.3px solid lightgray;
+        background-color: white;
+        color: $color-primary-text;
+        font-size: 20px;
+        text-align: center;
+        margin-right: 2px;
+      }
+
+      .other-option.selected {
+        background-color: $color-primary-text;
+        color: white;
       }
     }
 
     .boolean-container {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
+      margin: 20px 0 0;
 
       .boolean-options-container {
         display: flex;
         flex-direction: row;
-        gap: 50px;
+        gap: 35px;
+
+        margin-left: 45px;
 
         .boolean-option {
           height: 52px;
@@ -163,55 +182,17 @@
         }
       }
     }
-
-    .radio-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 13px;
-
-      .radio-options-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        @include xsmall {
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        .radio-option {
-          display: flex;
-          flex-direction: row;
-          gap: 5px;
-          width: 280px;
-          height: 45px;
-        }
-
-        .radio-option img {
-          width: 25px;
-          height: 25px;
-          cursor: pointer;
-        }
-
-        .option-text {
-          font-size: 19px;
-          font-weight: 400;
-          padding: 1px 6px 2px;
-          cursor: pointer;
-        }
-      }
-    }
   }
 
   .actions-container {
     display: flex;
-    justify-content: flex-end;
-    width: 88%;
-    padding: 50px 6% 100px 6%;
+    justify-content: space-between;
+    padding: 7% 6% 5% 6%;
     @include xsmall {
-      padding-right: 0;
       justify-content: center;
       width: 100%;
+      gap: 8px;
+      padding-right: 0;
     }
 
     .next-button {
@@ -222,7 +203,8 @@
       font-size: 18px;
       font-weight: 700;
       @include xsmall {
-        width: 98%;
+        height: 64px;
+        width: 47%;
       }
       &:disabled {
         cursor: not-allowed;
@@ -233,6 +215,22 @@
       &:enabled {
         background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
         cursor: pointer;
+      }
+    }
+
+    .prev-button {
+      cursor: pointer;
+      color: $color-prev-button;
+      background-image: linear-gradient(180deg, #fff, #fff);
+      border: 1px solid #8f8f8f;
+      width: 208px;
+      height: 52px;
+      font-family: Opensanshebrew, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      @include xsmall {
+        height: 64px;
+        width: 47%;
       }
     }
   }
