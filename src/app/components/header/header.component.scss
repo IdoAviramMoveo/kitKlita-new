@@ -1,4 +1,6 @@
 @import "../../styles/mixins";
+@import "../../styles/colors";
+@import "../../styles/fonts";
 
 .header {
   display: flex;
@@ -17,7 +19,7 @@
 
   .header-title {
     font-size: 40pt;
-    font-family: "Reforma", sans-serif;
+    font-family: $reforma-font;
     color: $primary-text;
     font-weight: 500;
     text-align: right;

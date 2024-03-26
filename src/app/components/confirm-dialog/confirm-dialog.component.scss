@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@import '../../styles/colors';
+@import '../../styles/fonts';
 
 .dialog-container {
   display: flex;
@@ -23,7 +24,7 @@
 
   .dialog-title {
     color: $primary-text;
-    font-family: "Opensanshebrew";
+    font-family: $opensanshebrew-font;
     font-size: 32px;
     font-weight: 700;
     line-height: 36px;
@@ -34,7 +35,7 @@
 
   .dialog-question {
     color: $primary-text;
-    font-family: "Opensanshebrew";
+    font-family: $opensanshebrew-font;
     font-size: 24px;
     line-height: 28px;
     font-weight: 400;
@@ -57,7 +58,7 @@
       border: 1px solid $grey-darkest;
       opacity: 0.8;
       color: $black-lightest;
-      font-family: "Opensanshebrew";
+      font-family: $opensanshebrew-font;
       font-size: 18px;
       font-weight: 700;
       line-height: 52px;
@@ -70,7 +71,7 @@
       cursor: pointer;
       border: 1px solid $grey-darkest;
       color: $white-default;
-      font-family: "Opensanshebrew";
+      font-family: $opensanshebrew-font;
       font-size: 18px;
       font-weight: 700;
       line-height: 52px;

@@ -1,10 +1,11 @@
 @import "../../../styles/mixins";
-@import "../../../styles/variables";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
 
 .step-main-container {
   width: 100%;
   height: 100%;
-  font-family: Opensanshebrew, sans-serif;
+  font-family: $opensanshebrew-font;
   background-image: url("../../../../assets/images/bg_image.jpg");
   background-position: 0px -171.1px;
   background-repeat: no-repeat;
@@ -26,7 +27,7 @@
       align-self: flex-start;
       margin-right: 6%;
       font-size: 20pt;
-      font-family: "Reforma", sans-serif;
+      font-family: $reforma-font;
       color: $primary-text;
       font-weight: 500;
       text-align: right;
@@ -53,7 +54,7 @@
       .remove-button {
         cursor: pointer;
         font-size: 35px;
-        font-family: Opensanshebrew, sans-serif;
+        font-family: $opensanshebrew-font;
         color: $primary-text;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
@@ -63,7 +64,7 @@
       }
       .sub-title {
         font-size: 20pt;
-        font-family: "Reforma", sans-serif;
+        font-family: $reforma-font;
         color: $primary-text;
         font-weight: 500;
         text-align: right;
@@ -71,7 +72,7 @@
     }
 
     .validation-message {
-      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      font-family: $Helvetica-font;
       line-height: 20px;
       font-size: 14px;
       margin-top: -8px;
@@ -94,7 +95,7 @@
         width: 352px;
         height: 50px;
         padding: 8px 12px;
-        font-family: Opensanshebrew, sans-serif;
+        font-family: $opensanshebrew-font;
         font-size: 17px;
         ::placeholder {
           text-align: right;
@@ -115,7 +116,7 @@
     height: 52px;
     padding-top: 10px;
     padding-bottom: 15px;
-    font-family: Opensanshebrew, sans-serif;
+    font-family: $opensanshebrew-font;
     color: $primary-text;
     font-size: 17px;
     font-weight: 700;
@@ -133,7 +134,7 @@
     height: 52px;
     padding-top: 13px;
     padding-bottom: 15px;
-    font-family: Opensanshebrew, sans-serif;
+    font-family: $opensanshebrew-font;
     color: $white-default;
     font-size: 17px;
     font-weight: 500;

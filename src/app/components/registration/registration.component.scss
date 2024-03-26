@@ -1,5 +1,6 @@
 @import "../../styles/mixins";
-@import "../../styles/variables";
+@import "../../styles/colors";
+@import "../../styles/fonts";
 
 .actions-container {
     display: flex;
@@ -17,7 +18,7 @@
       color: $white-default;
       width: 208px;
       height: 52px;
-      font-family: Opensanshebrew, sans-serif;
+      font-family: $opensanshebrew-font;
       font-size: 18px;
       font-weight: 700;
       @include xsmall {
@@ -43,7 +44,7 @@
       border: 1px solid $grey-darkest;
       width: 208px;
       height: 52px;
-      font-family: Opensanshebrew, sans-serif;
+      font-family: $opensanshebrew-font;
       font-size: 18px;
       font-weight: 700;
       @include xsmall {
