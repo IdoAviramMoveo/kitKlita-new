@@ -1,4 +1,5 @@
 @import "../../../styles/mixins";
+@import "../../../styles/variables";
 
 .step-main-container {
   width: 100%;
@@ -11,7 +12,7 @@
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
-  color: #343530;
+  color: $black-lightest;
   font-size: 18px;
   font-weight: 700;
   @include xsmall {
@@ -26,7 +27,7 @@
       margin-right: 6%;
       font-size: 20pt;
       font-family: "Reforma", sans-serif;
-      color: #0f2d6c;
+      color: $primary-text;
       font-weight: 500;
       text-align: right;
     }
@@ -53,7 +54,7 @@
         cursor: pointer;
         font-size: 35px;
         font-family: Opensanshebrew, sans-serif;
-        color: #0f2d6c;
+        color: $primary-text;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -63,7 +64,7 @@
       .sub-title {
         font-size: 20pt;
         font-family: "Reforma", sans-serif;
-        color: #0f2d6c;
+        color: $primary-text;
         font-weight: 500;
         text-align: right;
       }
@@ -75,7 +76,7 @@
       font-size: 14px;
       margin-top: -8px;
       margin-bottom: 8px;
-      color: red;
+      color: $red-default;
       font-weight: 300;
     }
 
@@ -108,14 +109,14 @@
   .add-recommender-button {
     cursor: pointer;
     margin-top: 39px;
-    border: 1px solid #0f2d6c;
-    background-color: white;
+    border: 1px solid $primary-text;
+    background-color: $white-default;
     width: 352px;
     height: 52px;
     padding-top: 10px;
     padding-bottom: 15px;
     font-family: Opensanshebrew, sans-serif;
-    color: #0f2d6c;
+    color: $primary-text;
     font-size: 17px;
     font-weight: 700;
     @include xsmall {
@@ -126,14 +127,14 @@
   .add-workplace-button {
     cursor: pointer;
     margin-top: 39px;
-    border: 2px solid #0f2d6c;
-    background-color: #0f2d6c;
+    border: 2px solid $primary-text;
+    background-color: $primary-text;
     width: 352px;
     height: 52px;
     padding-top: 13px;
     padding-bottom: 15px;
     font-family: Opensanshebrew, sans-serif;
-    color: white;
+    color: $white-default;
     font-size: 17px;
     font-weight: 500;
     @include xsmall {

@@ -1,4 +1,5 @@
 @import "../../../styles/mixins";
+@import "../../../styles/variables";
 
 .step-main-container {
   width: 100%;
@@ -11,7 +12,7 @@
   flex-direction: column;
   text-align: right;
   padding-top: 36px;
-  color: $color-dark;
+  color: $black-lightest;
   font-size: 18px;
   font-weight: 700;
   @include xsmall {
@@ -26,7 +27,7 @@
       margin-right: 6%;
       font-size: 20pt;
       font-family: "Reforma", sans-serif;
-      color: $color-primary-text;
+      color: $primary-text;
       font-weight: 500;
       text-align: right;
     }
@@ -110,7 +111,7 @@
       font-size: 14px;
       margin-top: -8px;
       margin-bottom: 8px;
-      color: red;
+      color: $red-default;
       font-weight: 300;
     }
 
@@ -130,17 +131,17 @@
         min-width: 141px;
         width: 141px;
         height: 97px;
-        border: 0.3px solid lightgray;
-        background-color: white;
-        color: $color-primary-text;
+        border: 0.3px solid $grey-lighter;
+        background-color: $white-default;
+        color: $primary-text;
         font-size: 20px;
         text-align: center;
         margin-right: 2px;
       }
 
       .other-option.selected {
-        background-color: $color-primary-text;
-        color: white;
+        background-color: $primary-text;
+        color: $white-default;
       }
     }
 
@@ -175,7 +176,7 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          color: black;
+          color: $black-default;
           font-weight: bold;
           pointer-events: none;
           font-weight: 400;

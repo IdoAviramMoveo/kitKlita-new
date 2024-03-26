@@ -24,23 +24,23 @@ import { StepProp } from '../../models/steps.model';
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss',
 })
-
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
-  currentStep: number = 1;
+  currentStep: number = 3;
   FIRST_STEP: number = 1;
   steps: StepProp[];
 
   candidateQuestionnaireFields: FormField[] = candidateQuestionnaireFields;
-  personalInformationFields: (FormField | FormGroupFields)[] = personalInformationFields;
+  personalInformationFields: (FormField | FormGroupFields)[] =
+    personalInformationFields;
   previousJobsFields: (FormField | FormGroupFields | FormArrayField)[] =
     previousJobsFields;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -50,9 +50,26 @@ export class RegistrationComponent implements OnInit {
         this.userType = type;
         this.initializeForm();
         this.steps = [
-          { component: CandidateQuestionnaireStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_ONE) as FormGroup} },
-          { component: PersonalInformationStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_TWO) as FormGroup} },
-          { component: PreviousJobsStepComponent, formGroup: {'formGroup' : this.registrationForm.get(Step.STEP_THREE) as FormGroup} }
+          {
+            component: CandidateQuestionnaireStepComponent,
+            formGroup: {
+              formGroup: this.registrationForm.get(Step.STEP_ONE) as FormGroup,
+            },
+          },
+          {
+            component: PersonalInformationStepComponent,
+            formGroup: {
+              formGroup: this.registrationForm.get(Step.STEP_TWO) as FormGroup,
+            },
+          },
+          {
+            component: PreviousJobsStepComponent,
+            formGroup: {
+              formGroup: this.registrationForm.get(
+                Step.STEP_THREE
+              ) as FormGroup,
+            },
+          },
         ];
       } else {
         this.router.navigate(['/registration/general']);
@@ -62,9 +79,15 @@ export class RegistrationComponent implements OnInit {
 
   initializeForm() {
     this.registrationForm = this.fb.group({
-      [Step.STEP_ONE]: this.fb.group(buildFormControls(this.candidateQuestionnaireFields)),
-      [Step.STEP_TWO]: this.fb.group(buildFormControls(this.personalInformationFields)),
-      [Step.STEP_THREE]: this.fb.group(buildFormControls(this.previousJobsFields)),
+      [Step.STEP_ONE]: this.fb.group(
+        buildFormControls(this.candidateQuestionnaireFields)
+      ),
+      [Step.STEP_TWO]: this.fb.group(
+        buildFormControls(this.personalInformationFields)
+      ),
+      [Step.STEP_THREE]: this.fb.group(
+        buildFormControls(this.previousJobsFields)
+      ),
     });
   }
 

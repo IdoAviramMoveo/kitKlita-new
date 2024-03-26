@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .dialog-container {
   display: flex;
   flex-direction: column;
@@ -20,7 +22,7 @@
   }
 
   .dialog-title {
-    color: #0f2d6c;
+    color: $primary-text;
     font-family: "Opensanshebrew";
     font-size: 32px;
     font-weight: 700;
@@ -31,7 +33,7 @@
   }
 
   .dialog-question {
-    color: #0f2d6c;
+    color: $primary-text;
     font-family: "Opensanshebrew";
     font-size: 24px;
     line-height: 28px;
@@ -52,9 +54,9 @@
     margin-top: 50px;
     .cancel-button {
       cursor: pointer;
-      border: 1px solid #8f8f8f;
+      border: 1px solid $grey-darkest;
       opacity: 0.8;
-      color: #343530;
+      color: $black-lightest;
       font-family: "Opensanshebrew";
       font-size: 18px;
       font-weight: 700;
@@ -66,14 +68,14 @@
     }
     .ok-button {
       cursor: pointer;
-      border: 1px solid #8f8f8f;
-      color: #ffffff;
+      border: 1px solid $grey-darkest;
+      color: $white-default;
       font-family: "Opensanshebrew";
       font-size: 18px;
       font-weight: 700;
       line-height: 52px;
       height: 52px;
-      background-color: #0f2d6c;
+      background-color: $primary-text;
       text-align: center;
       width: 27%;
       border-radius: 0;

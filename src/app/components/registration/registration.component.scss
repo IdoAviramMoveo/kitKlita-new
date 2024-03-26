@@ -1,4 +1,5 @@
 @import "../../styles/mixins";
+@import "../../styles/variables";
 
 .actions-container {
     display: flex;
@@ -13,7 +14,7 @@
     }
 
     .next-button {
-      color: white;
+      color: $white-default;
       width: 208px;
       height: 52px;
       font-family: Opensanshebrew, sans-serif;
@@ -25,21 +26,21 @@
       }
       &:disabled {
         cursor: not-allowed;
-        color: #c2c3c6;
-        background-color: #f0f0ef;
+        color: $grey-dark;
+        background-color: $grey-lightest;
         border: 0;
       }
       &:enabled {
-        background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+        background-image: linear-gradient(180deg, $primary-text, $primary-text);
         cursor: pointer;
       }
     }
 
     .prev-button {
       cursor: pointer;
-      color: $color-prev-button;
-      background-image: linear-gradient(180deg, #fff, #fff);
-      border: 1px solid #8f8f8f;
+      color: $grey-darker;
+      background-image: linear-gradient(180deg, $white-default, $white-default);
+      border: 1px solid $grey-darkest;
       width: 208px;
       height: 52px;
       font-family: Opensanshebrew, sans-serif;
