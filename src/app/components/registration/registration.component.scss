@@ -1,0 +1,53 @@
+@import "../../styles/mixins";
+
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 7% 6% 5% 6%;
+    flex-direction: row-reverse;
+    @include xsmall {
+      justify-content: center;
+      width: 100%;
+      gap: 8px;
+      padding-right: 0;
+    }
+
+    .next-button {
+      color: white;
+      width: 208px;
+      height: 52px;
+      font-family: Opensanshebrew, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      @include xsmall {
+        height: 64px;
+        width: 47%;
+      }
+      &:disabled {
+        cursor: not-allowed;
+        color: #c2c3c6;
+        background-color: #f0f0ef;
+        border: 0;
+      }
+      &:enabled {
+        background-image: linear-gradient(180deg, #0f2d6c, #0f2d6c);
+        cursor: pointer;
+      }
+    }
+
+    .prev-button {
+      cursor: pointer;
+      color: $color-prev-button;
+      background-image: linear-gradient(180deg, #fff, #fff);
+      border: 1px solid #8f8f8f;
+      width: 208px;
+      height: 52px;
+      font-family: Opensanshebrew, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      @include xsmall {
+        height: 64px;
+        width: 47%;
+      }
+    }
+  }

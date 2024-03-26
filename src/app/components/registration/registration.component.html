@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="registration-container" dir="rtl">
+  <ng-container *ngFor="let step of steps; let i = index">
+    <ng-container *ngIf="currentStep === i + 1">
+      <ng-container *ngComponentOutlet="step.component; inputs: step.formGroup" #currentStep>
+      </ng-container>
+      <div class="actions-container">
+        <button
+          type="button"
+          (click)="goToNextStep()"
+          [disabled]="!step.formGroup.formGroup.valid"
+          class="next-button"
+        >
+          המשך
+        </button>
+        <button *ngIf="currentStep !== FIRST_STEP" type="button" (click)="goToPreviousStep()" class="prev-button">חזור</button>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

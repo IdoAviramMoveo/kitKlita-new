@@ -1,1 +1,84 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: "Reforma";
+  src: url("../src/assets/fonts/ReformaMedium.ttf") format("truetype");
+  src: url("../src/assets/fonts/FbReforma-Medium.eot");
+  src: url("../src/assets/fonts/FbReforma-Medium.eot?#iefix")
+      format("embedded-opentype"),
+    url("../src/assets/fonts/FbReforma-Medium.woff") format("woff"),
+    url("../src/assets/fonts/FbReforma-Medium.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-ExtraBold.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-LightItalic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Opensanshebrew";
+  src: url("../src/assets/fonts/OpenSansHebrew-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}

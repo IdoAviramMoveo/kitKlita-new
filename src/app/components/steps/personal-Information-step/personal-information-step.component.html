@@ -1,0 +1,121 @@
+<div class="step-main-container" [formGroup]="formGroup">
+  <h1 class="header-title-mobile">שאלון פרטים אישיים</h1>
+  <div class="form-container">
+    <ng-container *ngFor="let field of fields">
+      <div
+        *ngIf="
+          (field.type === FieldType.TEXT || field.type === FieldType.NUMBER) &&
+          shouldDisplayField(field)
+        "
+        class="text-input-container"
+      >
+        <input
+          *ngIf="shouldDisplayField(field)"
+          class="text-input"
+          [type]="field.type"
+          [formControlName]="field.name"
+          [placeholder]="field.label"
+          (blur)="onFieldBlur(field.name)"
+        />
+        <div
+          *ngIf="
+            formGroup.get(field.name).touched &&
+            formGroup.get(field.name).invalid
+          "
+          class="validation-message"
+        >
+          {{ field.errorMessage }}
+        </div>
+      </div>
+
+      <div *ngIf="field.group" formGroupName="address" class="group-container">
+        <ng-container *ngFor="let subfield of field.fields; let i = index">
+          <div class="address-input-container">
+            <input
+              [ngClass]="{
+                'first-input': i === 0,
+                'last-input': i === field.fields.length - 1
+              }"
+              [type]="subfield.type"
+              [formControlName]="subfield.name"
+              [placeholder]="subfield.label"
+            />
+            <div
+              *ngIf="
+                formGroup.get('address').get(subfield.name).touched &&
+                formGroup.get('address').get(subfield.name).invalid
+              "
+              class="validation-message"
+            >
+              {{ subfield.errorMessage }}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div *ngIf="field.type === FieldType.RADIO">
+        <label>{{ field.label }}</label>
+        <ng-container *ngFor="let option of field.options">
+          <label>
+            <input
+              type="radio"
+              [formControlName]="field.name"
+              [value]="option.value"
+            />
+            {{ option.display }}
+          </label>
+        </ng-container>
+      </div>
+
+      <div
+        *ngIf="field.type === FieldType.GENDER_SELECT"
+        class="gender-selection"
+      >
+        <label>{{ field.label }}</label>
+        <div class="gender-options-container">
+          <ng-container *ngFor="let option of field.options">
+            <img
+              *ngIf="option.image"
+              [src]="
+                isSelected(field.name, option.value)
+                  ? option.selectedImage
+                  : option.image
+              "
+              (click)="selectOption(field.name, option.value)"
+              [alt]="option.display"
+              class="gender-image"
+            />
+            <div
+              *ngIf="!option.image"
+              [class.selected]="isSelected(field.name, option.value)"
+              class="other-option"
+              (click)="selectOption(field.name, option.value)"
+            >
+              {{ option.display }}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div *ngIf="field.type === FieldType.BOOLEAN" class="boolean-container">
+        <label>{{ field.label }}</label>
+        <div class="boolean-options-container">
+          <div
+            *ngFor="let option of field.options"
+            class="boolean-option"
+            (click)="formGroup.get(field.name).setValue(option.value)"
+          >
+            <img
+              src="{{
+                formGroup.get(field.name).value === option.value
+                  ? option.selectedImage
+                  : option.image
+              }}"
+            />
+            <span class="option-text">{{ option.display }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
