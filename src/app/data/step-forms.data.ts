@@ -9,7 +9,7 @@ export const candidateQuestionnaireFields: FormField[] = [
   {
     name: 'desiredSector',
     type: FieldType.DROPDOWN,
-    image: '../../../assets/images/select-arrow.svg',
+    image: './assets/images/select-arrow.svg',
     options: [
       { value: 'sector1', display: 'כח עזר' },
       { value: 'sector2', display: 'רופאים' },
@@ -45,7 +45,7 @@ export const candidateQuestionnaireFields: FormField[] = [
       {
         value: 'option1',
         display: 'חברת השמה',
-        image: '../../../assets/images/unselected_check.svg',
+        image: './assets/images/unselected_check.svg',
         selectedImage: '../../../assets/images/selected_check.svg',
       },
       {

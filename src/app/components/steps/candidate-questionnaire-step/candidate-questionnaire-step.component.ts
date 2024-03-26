@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { candidateQuestionnaireFields } from '../../../data/step-forms.data';
 import { FieldType } from '../../../enums/field-types.enum';
 import { FormField, FormGroupFields } from '../../../models/form-fields.model';
+import { TRANSLATIONS } from '../../../data/translations.data';
 
 @Component({
   selector: 'app-candidate-questionnaire-step',
@@ -16,6 +17,7 @@ export class CandidateQuestionnaireStepComponent implements OnInit {
   FieldType = FieldType;
   fields = candidateQuestionnaireFields;
   dropdowns: { [key: string]: boolean } = {};
+  translations = TRANSLATIONS;
 
   ngOnInit() {
     window.scrollTo(0, 0);

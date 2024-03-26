@@ -24,7 +24,7 @@
           [disabled]="formGroup.get(field.name).disabled"
           (click)="toggleDropdown(field.name)"
         >
-          {{ getSelectedOptionDisplay(field) || "בחר" }}
+          {{ getSelectedOptionDisplay(field) || translations.GENERAL.CHOOSE }}
           <img class="arrow" src="./assets/images/select-arrow.png" />
         </button>
         <div *ngIf="dropdowns[field.name]" class="select-options">
