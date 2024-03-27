@@ -27,8 +27,8 @@ import { StepProp } from '../../models/steps.model';
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   userType: string;
-  currentStep: number = 1;
-  FIRST_STEP: number = 1;
+  currentStep: number = 2;
+  firstStep: number = 1;
   steps: StepProp[];
 
   candidateQuestionnaireFields: FormField[] = candidateQuestionnaireFields;

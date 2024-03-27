@@ -28,6 +28,7 @@ export interface FormField {
   required?: boolean;
   displayCondition?: FormCondition;
   enableCondition?: FormEnablementCondition;
+  note?: string;
 }
 
 export interface FormGroupFields {

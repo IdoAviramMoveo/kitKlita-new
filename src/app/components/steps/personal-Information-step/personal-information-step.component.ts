@@ -22,6 +22,14 @@ export class PersonalInformationStepComponent implements OnInit {
     window.scrollTo(0, 0);
   }
 
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   if (file) {
+  //     // Do something with the selected file (e.g., upload)
+  //     console.log('Selected file:', file);
+  //   }
+  // }
+
   selectOption(fieldName: string, value: any) {
     this.formGroup.get(fieldName).setValue(value);
   }

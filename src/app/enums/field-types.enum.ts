@@ -6,4 +6,5 @@ export enum FieldType {
   GENDER_SELECT = 'genderSelect',
   BOOLEAN = 'boolean',
   FORM_ARRAY = 'formArray',
+  FILE = 'file',
 }

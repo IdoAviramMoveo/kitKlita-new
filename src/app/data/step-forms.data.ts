@@ -4,6 +4,12 @@ import {
   FormGroupFields,
 } from '../models/form-fields.model';
 import { FieldType } from '../enums/field-types.enum';
+import { UserType } from '../enums/user-types.enum';
+
+export const candidateQuestionnaireFieldsByUserType = {
+  [UserType.GENERAL]: ['desiredSector', 'desiredRole'],
+  [UserType.INDEPENDENT]: ['desiredSector'],
+};
 
 export const candidateQuestionnaireFields: FormField[] = [
   {
@@ -96,14 +102,14 @@ export const candidateQuestionnaireFields: FormField[] = [
       {
         value: 'yes',
         display: 'כן',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
       {
         value: 'no',
         display: 'לא',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
     ],
     label: 'האם עבדת באסותא בעבר?',
@@ -117,14 +123,14 @@ export const candidateQuestionnaireFields: FormField[] = [
       {
         value: 'yes',
         display: 'כן',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
       {
         value: 'no',
         display: 'לא',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
     ],
     label: 'האם הנך בעל קרבה משפחתית לעובד אסותא?',
@@ -141,6 +147,13 @@ export const personalInformationFields: (FormField | FormGroupFields)[] = [
     errorMessage: '* יש למלא שם פרטי בעברית בלבד',
     validationRules: ['hebrew'],
     required: true,
+  },
+  {
+    name: 'id',
+    type: FieldType.FILE,
+    label: 'העלאת תעודת זהות',
+    required: true,
+    note: '* יש לצרף צילום ברור של תעודת זהות',
   },
   {
     name: 'lastName',
@@ -282,14 +295,14 @@ export const personalInformationFields: (FormField | FormGroupFields)[] = [
       {
         value: true,
         display: 'כן',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
       {
         value: false,
         display: 'לא',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
     ],
     label: 'בעל רכב',
@@ -303,14 +316,14 @@ export const personalInformationFields: (FormField | FormGroupFields)[] = [
       {
         value: true,
         display: 'כן',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
       {
         value: false,
         display: 'לא',
-        image: '../../../assets/images/unselected_box.svg',
-        selectedImage: '../../../assets/images/selected_box.svg',
+        image: '../../../assets/images/unselected-box.svg',
+        selectedImage: '../../../assets/images/selected-box.svg',
       },
     ],
     label: 'רישיון נהיגה',
